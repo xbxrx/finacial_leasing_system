@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team01.dao.ICustomerInfoDao">
+
+    <resultMap id="paperResultMap" type="CustomerInfo">
+        <result property="customerId" column="customer_id"/>
+        <result property="customerName" column="customer_name"/>
+        <result property="customerPassword" column="customer_password"/>
+        <result property="customerPhone" column="customer_phone"/>
+        <result property="customerMail" column="customer_mail"/>
+        <result property="createTime" column="create_time"/>
+        <result property="consumeTotal" column="consume_total"/>
+    </resultMap>
+
+<select id="queryCustomerInfoByName" parameterType="String" resultMap="paperResultMap">
+    select *
+    from customer_list
+    where customer_name like "%"#{customerName}"%"
+</select>
+
+    <select id="queryAllCustomerInfo" resultMap="paperResultMap">
+        select *
+        from customer_list
+    </select>
+
+    <insert id="addCustomerInfo" parameterType="com.team01.domain.CustomerInfo">
+         insert into customer_list(customer_id,customer_name,customer_password,customer_phone,customer_mail,create_time,consume_total)
+        value(#{customerId},#{customerName},#{customerPassword},#{customerPhone},#{customerMail},NOW(),#{consumeTotal})
+    </insert>
+
+    <delete id="deleteCustomerInfo" parameterType="int">
+            delete  from customer_list where customer_id=#{customerId}
+    </delete>
+
+
+
+</mapper>

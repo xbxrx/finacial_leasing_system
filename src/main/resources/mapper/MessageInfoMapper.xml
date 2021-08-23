@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.team01.dao.IMessageInfoDao">
+
+    <resultMap id="paperResultMap" type="com.team01.domain.MessageInfo">
+        <result property="messageId" column="message_id"/>
+        <result property="messageTitle" column="message_title"/>
+        <result property="authorName" column="author_name"/>
+        <result property="publishTime" column="publish_time"/>
+        <result property="productContent" column="product_content"/>
+    </resultMap>
+
+
+    <insert id="addMessageInfo" parameterType="com.team01.domain.MessageInfo">
+        INSERT INTO message_list(message_title,author_name,publish_time,product_content)
+            VALUE(#{messageTitle},#{authorName},NOW(),#{productContent})
+    </insert>
+
+    <select id="queryAllMessageInfo" resultMap="paperResultMap">
+        select *
+        from message_list
+    </select>
+
+    <select id="queryByMessageId" resultMap="paperResultMap" parameterType="int">
+        select *
+        from message_list where message_id=#{messageId}
+    </select>
+
+    <select id="queryByMessageTitle" resultMap="paperResultMap" parameterType="String">
+        select *
+        from message_list where message_title like "%"#{messageTitle}"%"
+    </select>
+
+<!--    <select id="queryInvalidOrder" resultMap="paperResultMap">-->
+<!--        select *from order_list-->
+<!--        where TIMESTAMPDIFF(YEAR,DATE_FORMAT(end_time,'%Y-%m-%d'),DATE_FORMAT(NOW(),'%Y-%m-%d'))>5-->
+<!--    </select>-->
+
+    <delete id="deleteMessageInfo" parameterType="int">
+        delete from message_list where message_id=#{messageId}
+    </delete>
+
+    <update id="updateMessageInfo" parameterType="com.team01.domain.MessageInfo">
+        update message_list
+        set message_title=#{messageTitle},author_name=#{authorName},publish_time=NOW(),product_content=#{productContent}
+        where message_id=#{messageId}
+    </update>
+
+
+
+
+
+
+
+
+
+</mapper>
