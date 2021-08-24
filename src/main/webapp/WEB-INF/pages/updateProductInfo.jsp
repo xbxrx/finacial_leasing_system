@@ -61,10 +61,21 @@
                                    name="productPrice"  data-equal-to="#doc-vld-pwd-1"  > <small>请输入修改价格</small>
                         </div>
                     </div>
+
+                    <div class="am-form-group">
+                        <label class="am-u-sm-3 am-form-label">
+                            产品介绍 </label>
+                        <div class="am-u-sm-9">
+                                <textarea name="introduceContent"  placeholder="请输入产品介绍"
+                                          data-equal-to="#doc-vld-ctn-3"
+                                          rows="16"></textarea>
+                            <small>输入产品介绍</small>
+                        </div>
+                    </div>
+
                     <div class="am-form-group">
                         <div class="am-u-sm-9 am-u-sm-push-3">
                             <input type="submit" class="am-btn am-btn-success" onclick="update()" value="修改产品信息" />
-
                             <a href="productManager"> <input type="button" class="am-btn am-btn-success"  value="返回" /></a>
                         </div>
                     </div>

@@ -29,7 +29,7 @@
 
     <select id="queryByOrderName" resultMap="paperResultMap" parameterType="String">
         select *
-        from order_list where product_name like "%"#{productName}"%"
+        from order_list where concat(product_name,customer_name) like "%"#{productName}"%"
     </select>
 
     <select id="queryInvalidOrder" resultMap="paperResultMap">

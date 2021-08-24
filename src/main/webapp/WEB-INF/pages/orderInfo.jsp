@@ -49,7 +49,7 @@
         <form action="toQueryOrder">
             <div class="am-u-sm-12 am-u-md-3">
                 <div class="am-input-group am-input-group-sm">
-                    <input type="text" class="am-form-field" placeholder="请输入订单关键字" name="productName">
+                    <input type="text" class="am-form-field" placeholder="请输入产品名或用户名关键字" name="productName">
                     <span class="am-input-group-btn">
                     <button class="am-btn am-btn-default" type="submit">查询</button>
                 </span>
@@ -108,12 +108,18 @@
                             </tr>
                         </c:forEach>
                     </c:when>
+<%--                    <c:when test="${null == orderInfos}">--%>
+<%--                    <tr>--%>
+<%--                        <td>未查询到相关信息</td>--%>
+<%--                    </tr>--%>
+<%--                    </c:when>--%>
+
                     <c:otherwise>
-                    <tr class="last">
-                        <td colspan="3" style="text-align:center;"></td>
-                    <tr>
-                        </c:otherwise>
-                        </c:choose>
+                        <tr class="last">
+                            <td colspan="3" style="text-align:center">未查询到相关信息</td>
+                        <tr>
+                    </c:otherwise>
+                    </c:choose>
                     </tbody>
                 </table>
                 <div class="am-cf">

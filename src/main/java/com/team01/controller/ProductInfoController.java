@@ -43,12 +43,9 @@ public class ProductInfoController {
      */
     @RequestMapping("productManager")
     public String productManager(Model model){
-
         List<ProductInfo> list=productInfoService.queryAllProductInfo();
-//        System.out.println(list);
         model.addAttribute("ProductInfoList",list);
         return "productInfo";
-
     }
 
 
@@ -58,7 +55,6 @@ public class ProductInfoController {
      */
     @RequestMapping("deleteProductInfo")
     public String deleteProductInfo(int productId, Model model){
-
         int i=productInfoService.deleteProductInfo(productId);
         List<ProductInfo> list=productInfoService.queryAllProductInfo();
         model.addAttribute("ProductInfoList",list);
@@ -66,20 +62,19 @@ public class ProductInfoController {
     }
     @RequestMapping("updateProductInfo")
     public String updateProductInfo(int productId,Model model){
-
         ProductInfo productInfo=productInfoService.queryById(productId);
         model.addAttribute("ProductInfo",productInfo);
         return "updateProductInfo";
     }
     @RequestMapping("resultUpdateProductInfo")
-    public String resultUpdateProductInfo(int productId,String productName,String productStatus,String productType,int productPrice,Model model){
+    public String resultUpdateProductInfo(int productId,String productName,String productStatus,String productType,String introduceContent,int productPrice,Model model){
         ProductInfo productInfo=new ProductInfo();
         productInfo.setProductId(productId);
         productInfo.setProductName(productName);
         productInfo.setProductStatus(productStatus);
         productInfo.setProductType(productType);
         productInfo.setProductPrice(productPrice);
-
+        productInfo.setIntroduceContent(introduceContent);
         int i= productInfoService.updateProductInfo(productInfo);
 
         List<ProductInfo> list=productInfoService.queryAllProductInfo();
@@ -105,15 +100,14 @@ public class ProductInfoController {
      *添加结果控制器
      */
     @RequestMapping("resultAddProductInfo")
-    public String resultAddProductInfo(String productName,String productStatus,String productType,int productPrice,Model model){
+    public String resultAddProductInfo(String productName,String productStatus,String productType,String introduceContent,int productPrice,Model model){
         ProductInfo productInfo=new ProductInfo();
         productInfo.setProductName(productName);
         productInfo.setProductStatus(productStatus);
         productInfo.setProductType(productType);
         productInfo.setProductPrice(productPrice);
-
+        productInfo.setIntroduceContent(introduceContent);
         productInfoService.addProductInfo(productInfo);
-
         List<ProductInfo> list=productInfoService.queryAllProductInfo();
         model.addAttribute("ProductInfoList",list);
 
@@ -128,6 +122,13 @@ public class ProductInfoController {
         model.addAttribute("ProductInfoList",list);
 
         return "productInfo";
+    }
+
+    @RequestMapping("toQueryByProductId")
+    public String queryByProductId(int productId,Model model){
+        ProductInfo productInfo=productInfoService.queryById(productId);
+        model.addAttribute("productInfo",productInfo);
+        return "product";
     }
 
 

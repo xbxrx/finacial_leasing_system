@@ -15,10 +15,7 @@ public class OrderInfoServiceImp implements IOrderInfoService {
     IOrderInfoDao iOrderInfoDao;
 
     @Override
-    public List<OrderInfo> queryAllOrderInfo() {
-        return iOrderInfoDao.queryAllOrderInfo();
-
-    }
+    public List<OrderInfo> queryAllOrderInfo() { return iOrderInfoDao.queryAllOrderInfo(); }
 
     @Override
     public List<OrderInfo> queryByOrderName(String productName) {
@@ -41,9 +38,6 @@ public class OrderInfoServiceImp implements IOrderInfoService {
         return iOrderInfoDao.deleteOrderInfo(orderId);
     }
 
-    @Override
-    public int getOrderCount() {
-        return iOrderInfoDao.getOrderCount();
-    }
+
 
 }

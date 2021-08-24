@@ -10,11 +10,12 @@
         <result property="productStatus" column="product_status"/>
         <result property="productType" column="product_type"/>
         <result property="productPrice" column="product_price"/>
+        <result property="introduceContent" column="introduce_content"/>
     </resultMap>
 
     <insert id="addProductInfo" parameterType="com.team01.domain.ProductInfo">
-         insert into product_list(product_id,product_name,product_status,product_type,product_price)
-        value(#{productId},#{productName},#{productStatus},#{productType},#{productPrice})
+         insert into product_list(product_id,product_name,product_status,product_type,product_price,introduce_content)
+        value(#{productId},#{productName},#{productStatus},#{productType},#{productPrice},#{introduceContent})
     </insert>
 
     <delete id="deleteProductInfo" parameterType="int">

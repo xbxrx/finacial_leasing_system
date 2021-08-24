@@ -4,8 +4,9 @@ public class ProductInfo {
     private int productId;
     private String productName;
     private String productStatus;
-    private  String productType;
-    private  int productPrice;
+    private String productType;
+    private String introduceContent;
+    private int productPrice;
 
     @Override
     public String toString() {
@@ -34,6 +35,14 @@ public class ProductInfo {
         this.productStatus = productStatus;
         this.productType = productType;
         this.productPrice = productPrice;
+    }
+
+    public String getIntroduceContent() {
+        return introduceContent;
+    }
+
+    public void setIntroduceContent(String introduceContent) {
+        this.introduceContent = introduceContent;
     }
 
     public int getProductId() {

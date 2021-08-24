@@ -92,7 +92,7 @@
                     </c:when>
                     <c:otherwise>
                     <tr class="last">
-                        <td colspan="3" style="text-align:center;"></td>
+                        <td colspan="3" style="text-align:center;">未查询到相关信息</td>
                     <tr>
                         </c:otherwise>
                         </c:choose>

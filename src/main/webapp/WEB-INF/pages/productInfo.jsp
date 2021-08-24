@@ -43,7 +43,6 @@
         </div>
         <div class="am-u-sm-12 am-u-md-3">
             <div class="am-input-group am-input-group-sm">
-
                 <form action="queryProductInfo" method="post" class="am-input-group am-input-group-sm" >
                     <input type="text" class="am-form-field" id="ProductName" name="productName" placeholder="请输入想要查看产品关键字">
                     <span class="am-input-group-btn">
@@ -78,7 +77,7 @@
                         <td><input type="checkbox"></td>
                         <td>${item.productId}</td>
                         <td>
-                            <a href="#">${item.productName}</a>
+                            <a href="toQueryByProductId?productId=${item.productId}">${item.productName}</a>
                         </td>
                         <td>${item.productStatus}</td>
                         <td class="am-hide-sm-only">${item.productType}</td>
@@ -88,7 +87,7 @@
                                 <div class="am-btn-group am-btn-group-xs">
                                     <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span>
                                         <a href="updateProductInfo?productId=${item.productId}">编辑</a></button>
-                                    <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only" onclick="delcfm()">
+                                    <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only" onclick="del()">
                                         <span class="am-icon-trash-o">
                                             <a href="deleteProductInfo?productId=${item.productId}">删除</a>
                                         </span>
@@ -107,7 +106,7 @@
                     共 ${ProductInfoList.size()} 条记录
                     <div class="am-fr">
                         <ul class="am-pagination">
-                            <li class="am-disabled"><a href="#">«</a></li>
+                            <li class="am-active"><a href="#">«</a></li>
                             <li class="am-active"><a href="#">1</a></li>
                             <li><a href="#">2</a></li>
                             <li><a href="#">3</a></li>
@@ -124,7 +123,7 @@
 </div>
 
 <script language="javascript">
-    function delcfm() {
+    function del() {
         if (!confirm("确认要删除？")) {
             window.event.returnValue = false;
         }
