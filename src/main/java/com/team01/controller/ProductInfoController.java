@@ -117,7 +117,7 @@ public class ProductInfoController {
         List<ProductInfo> list=productInfoService.queryAllProductInfo();
         model.addAttribute("ProductInfoList",list);
 
-        return "ProductInfo";
+        return "productInfo";
     }
     @RequestMapping("queryProductInfo")
     public String queryProductInfo(String productName,Model model){

@@ -54,7 +54,7 @@ public class CustomerInfoController {
 
             List<CustomerInfo> list=customerService.queryAllCustomerInfo();
             model.addAttribute("CustomerInfoList",list);
-            return "CustomerInfo";
+            return "customerInfo";
         }
         return "error";
     }
