@@ -12,7 +12,7 @@ public class AdminInfoServiceImpl implements IAdiminInfoService {
     IAdminInfoDao iAdminInfoDao;
 
     @Override
-    public AdminInfo queryByName(String adminName) {
-      return iAdminInfoDao.queryByName(adminName);
+    public AdminInfo queryByNameAndPassword(String adminName,String adminPassword) {
+      return iAdminInfoDao.queryByNameAndPassword(adminName,adminPassword);
     }
 }

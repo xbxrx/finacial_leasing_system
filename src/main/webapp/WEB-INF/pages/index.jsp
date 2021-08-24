@@ -41,13 +41,16 @@
 
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
-                <a href="javascript:;">
-                    <img src="images/1.gif" class="layui-nav-img"> 管理员
-                </a>
+                <img src="images/1.gif" class="layui-nav-img">
+                <b class="text-black">欢迎您:</b>
+                <%=session.getAttribute("adminName")%>
+                </span>
             </li>
+
             <li class="layui-nav-item">
-                <a href="exit">退出</a>
+                <a href="javascript:void(0);"   onclick="logout()" >退出</a>
             </li>
+
         </ul>
         <div align="center"></div>
     </div>
@@ -147,6 +150,16 @@
 
     });
 </script>
+
+<script type="text/javascript">
+    function logout(){
+        var result = confirm("确定要退出吗？");
+        if(result){
+            location.href="tologout";
+        }
+    }
+</script>
+
 </body>
 
 

@@ -12,9 +12,11 @@
     </resultMap>
 
 
-    <select id="queryByName" parameterType="String" resultType="com.team01.domain.AdminInfo">
+    <select id="queryByNameAndPassword"  resultType="com.team01.domain.AdminInfo" >
         select *
         from admin_list
-        where admin_name=#{adminName}
+        where admin_name=#{adminName} and admin_password=#{adminPassword}
     </select>
+
+
 </mapper>

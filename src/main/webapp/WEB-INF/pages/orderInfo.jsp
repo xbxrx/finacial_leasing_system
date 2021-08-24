@@ -117,7 +117,7 @@
                     </tbody>
                 </table>
                 <div class="am-cf">
-                    共 15 条记录
+                    共 ${orderInfos.size()}条记录
                     <div class="am-fr">
                         <ul class="am-pagination">
                             <li class="am-disabled">
@@ -153,7 +153,7 @@
 <script language="javascript">
     function del() {
         if (!confirm("确认要删除？")) {
-            window.returnValue = false;
+            window.event.returnValue = false;
         }
     }
 </script>

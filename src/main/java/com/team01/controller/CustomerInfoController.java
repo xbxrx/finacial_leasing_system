@@ -21,7 +21,7 @@ public class CustomerInfoController {
 
         List<CustomerInfo> list=customerService.queryAllCustomerInfo();
         model.addAttribute("CustomerInfoList",list);
-        return "CustomerInfo";
+        return "customerInfo";
 
     }
 
@@ -36,7 +36,7 @@ public class CustomerInfoController {
 
     @RequestMapping("addCustomerInfo")
     public String addCustomerInfo(){
-        return "addCustomerInfo";
+        return "addCustomer";
     }
 
     @RequestMapping("resultAddCustomerInfo")
@@ -64,7 +64,7 @@ public class CustomerInfoController {
 
         List<CustomerInfo> list= customerService.queryCustomerInfoByName(customerName);
         model.addAttribute("CustomerInfoList",list);
-        return "CustomerInfo";
+        return "customerInfo";
     }
 
     @RequestMapping("deleteCustomerInfo")
@@ -75,7 +75,7 @@ public class CustomerInfoController {
         {
             List<CustomerInfo> list=customerService.queryAllCustomerInfo();
             model.addAttribute("CustomerInfoList",list);
-            return "CustomerInfo";
+            return "customerInfo";
         }
         return "error";
     }

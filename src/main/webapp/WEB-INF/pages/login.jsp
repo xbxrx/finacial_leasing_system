@@ -48,7 +48,7 @@
             <canvas id="demo-canvas"></canvas>
             <div class="logo_box">
                 <h3><strong>华迪融资租赁管理后台登录</strong></h3>
-                <form action="login" name="f" method="post">
+                <form action="login" name="f" method="post" id="loginForm">
                     <div class="input_outer">
                         <span class="u_user"></span>
                         <input id="adminName" name="adminName" class="text" style="color: #000000 !important" type="text" placeholder="请输入账户">
@@ -57,8 +57,9 @@
                         <span class="us_uer"></span>
                         <input id="adminPassword" name="adminPassword" class="text" style="color: #000000 !important; position:absolute; z-index:100;"value="" type="password" placeholder="请输入密码">
                     </div>
-                    <div id="LOGIN" class="mb2"><input  type="submit" class="act-but submit"  style="color: #FFFFFF" value="登录" /></div>
+<%--                    <div id="LOGIN" class="mb2"><input  type="submit" class="act-but submit"  style="color: #FFFFFF" value="登录" /></div>--%>
 
+                    <div id="LOGIN" class="mb2"><a class="act-but submit" href="javascript:;" onclick="document:loginForm.submit()" style="color: #FFFFFF">登录</a></div>
 
 <%--                    <input id="LOGIN" class="mb2" type="submit" class="act-but submit" style="color: #FFFFFF" value="登录" >--%>
                 </form>

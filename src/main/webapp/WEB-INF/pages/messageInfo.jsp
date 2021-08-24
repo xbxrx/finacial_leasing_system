@@ -114,7 +114,7 @@
                     </tbody>
                 </table>
                 <div class="am-cf" style="margin-top: 100px">
-                    共 15 条记录
+                    共 ${messageInfos.size()} 条记录
                     <div class="am-fr">
                         <ul class="am-pagination">
                             <li class="am-disabled">
