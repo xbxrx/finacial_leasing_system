@@ -43,4 +43,14 @@ public class ProductInfoServiceImpl implements IProductInfoService {
     public ProductInfo queryById(int productId) {
         return iProductInfoDao.queryById(productId);
     }
+
+    @Override
+    public List<ProductInfo> queryAllProductInfoByDesc() {
+        return iProductInfoDao.queryAllProductInfoByDesc();
+    }
+
+    @Override
+    public List<ProductInfo> queryAllProductInfoByAsc() {
+        return iProductInfoDao.queryAllProductInfoByAsc();
+    }
 }

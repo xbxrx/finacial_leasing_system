@@ -74,6 +74,16 @@
 <script src="<%=basePath%>js/demo-1.js"></script>
 <script src="<%=basePath%>js/vendor/jgrowl/jquery.jgrowl.min.js"></script>
 <script src="<%=basePath%>js/Longin.js"></script>
+<script>
+    var message="${errorMessage}";
+    if(message!=null&&message!=''&&message!=undefined&&message!='null'){
+        alert(message);
+    }
+
+
+
+</script>
+
 <div style="text-align:center;">
 </div>
 </body>

@@ -24,6 +24,12 @@ public interface IProductInfoDao {
     //  产品查询（根据id进行查询）
     public ProductInfo queryById(int productId);
 
+    // 降序排列
+    public List<ProductInfo> queryAllProductInfoByDesc();
+
+    // 升序排列
+    public List<ProductInfo> queryAllProductInfoByAsc();
+
 
 
 }

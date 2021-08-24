@@ -20,6 +20,31 @@
     <title></title>
     <link rel="stylesheet" href="css/amazeui.min.css" />
     <link rel="stylesheet" href="css/admin.css" />
+    <style>
+        #moneydate {
+            position: relative;
+        }
+        #moneydateAA {
+            position: absolute;
+            top: 57%;
+            right: 120px;
+            border: 5px solid;
+            border-color: #0e90d2 transparent  transparent  transparent;
+        }
+        #moneydateBB {
+            position: absolute;
+            top: 25%;
+            right: 120px;
+            border: 5px solid;
+            border-color: transparent transparent  #0e90d2  transparent;
+        }
+        #moneydateAA:hover {
+            border-color: red transparent  transparent  transparent;
+        }
+        #moneydateBB:hover {
+            border-color: transparent transparent  red  transparent;
+        }
+    </style>
 </head>
 <body>
 <div class="admin-content-body">
@@ -64,7 +89,11 @@
                         <th class="table-title">产品名称</th>
                         <th class="table-type">产品状态</th>
                         <th class="table-author am-hide-sm-only">产品类型</th>
-                        <th class="table-date am-hide-sm-only">产品价格</th>
+                        <th class="table-date am-hide-sm-only" id="moneydate">产品价格
+                          <a href="queryAllProductInfoByDesc" > <div  id="moneydateAA"> </div></a>
+                            <a href="queryAllProductInfoByAsc" > <div  id="moneydateBB"> </div></a>
+                        </th>
+
                         <th class="table-set">操作</th>
                     </tr>
                     </thead>

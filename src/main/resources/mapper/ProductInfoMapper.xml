@@ -26,6 +26,7 @@
     <select id="queryAllProductInfo" resultMap="paperResultMap">
             select *
             from product_list
+            order by product_price
         </select>
 
     <update id="updateProductInfo" parameterType="com.team01.domain.ProductInfo">
@@ -46,6 +47,18 @@
         from product_list
         where product_id=#{productId}
     </select>
+
+    <select id="queryAllProductInfoByDesc" resultMap="paperResultMap">
+            select *
+            from product_list
+            order by product_price desc
+        </select>
+
+    <select id="queryAllProductInfoByAsc" resultMap="paperResultMap">
+            select *
+            from product_list
+            order by product_price asc
+        </select>
 
 
 

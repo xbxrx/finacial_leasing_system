@@ -32,7 +32,7 @@ public class AdminInfoController {
            session.setAttribute("adminName",adminName);
            return "index";
     }else {
-           model.addAttribute("message","账户或密码错误");
+           model.addAttribute("errorMessage","用户名或密码错误，请重新登录!");
            return "login";
        }
     }

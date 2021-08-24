@@ -43,6 +43,7 @@ public class ProductInfoController {
      */
     @RequestMapping("productManager")
     public String productManager(Model model){
+
         List<ProductInfo> list=productInfoService.queryAllProductInfo();
         model.addAttribute("ProductInfoList",list);
         return "productInfo";
@@ -129,6 +130,23 @@ public class ProductInfoController {
         ProductInfo productInfo=productInfoService.queryById(productId);
         model.addAttribute("productInfo",productInfo);
         return "product";
+    }
+
+
+    @RequestMapping("queryAllProductInfoByDesc")
+    public String queryAllProductInfoByDesc(Model model){
+
+        List<ProductInfo> list=productInfoService.queryAllProductInfoByDesc();
+        model.addAttribute("ProductInfoList",list);
+        return "productInfo";
+    }
+
+    @RequestMapping("queryAllProductInfoByAsc")
+    public String queryAllProductInfoByAsc(Model model){
+
+        List<ProductInfo> list=productInfoService.queryAllProductInfoByAsc();
+        model.addAttribute("ProductInfoList",list);
+        return "productInfo";
     }
 
 

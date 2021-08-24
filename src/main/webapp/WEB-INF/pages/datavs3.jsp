@@ -35,7 +35,7 @@
     <div class="am-input-group am-input-group-sm">
         <input type="text" class="am-form-field" placeholder="请输入时间">
         <span class="am-input-group-btn">
-        <button class="am-btn am-btn-default" type="button">搜索</button>
+        <button class="am-btn am-btn-default" type="submit">搜索</button>
       </span>
     </div>
 </div>
