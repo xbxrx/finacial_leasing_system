@@ -104,7 +104,7 @@
                     </tbody>
                 </table>
                 <div class="am-cf">
-<%--                    共  条记录--%>
+                    共 ${ProductInfoList.size()} 条记录
                     <div class="am-fr">
                         <ul class="am-pagination">
                             <li class="am-disabled"><a href="#">«</a></li>

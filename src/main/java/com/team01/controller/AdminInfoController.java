@@ -8,6 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.Enumeration;
 
 @Controller
 public class AdminInfoController {
@@ -20,17 +23,26 @@ public class AdminInfoController {
     }
 
     @RequestMapping("login")
-    public String login(String adminName, String adminPassword, Model model)
+    public String login(String adminName, String adminPassword, Model model, HttpSession session)
     {
 
-       AdminInfo adminInfo= adminInfoService.queryByName(adminName);
+       AdminInfo adminInfo= adminInfoService.queryByNameAndPassword(adminName,adminPassword);
 
-       if(adminInfo.getAdminPassword().equals(adminPassword)){
+       if(adminInfo!=null){
+           session.setAttribute("adminName",adminName);
            return "index";
     }else {
            model.addAttribute("message","账户或密码错误");
            return "login";
        }
+    }
+    @RequestMapping("tologout")
+    public String tologout(HttpServletRequest request){
+        Enumeration em = request.getSession().getAttributeNames();
+        while(em.hasMoreElements()){
+            request.getSession().removeAttribute(em.nextElement().toString());
+        }
+        return "login";
     }
 
 }

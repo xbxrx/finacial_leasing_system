@@ -47,7 +47,7 @@ public class ProductInfoController {
         List<ProductInfo> list=productInfoService.queryAllProductInfo();
 //        System.out.println(list);
         model.addAttribute("ProductInfoList",list);
-        return "ProductInfo";
+        return "productInfo";
 
     }
 
@@ -62,7 +62,7 @@ public class ProductInfoController {
         int i=productInfoService.deleteProductInfo(productId);
         List<ProductInfo> list=productInfoService.queryAllProductInfo();
         model.addAttribute("ProductInfoList",list);
-        return "ProductInfo";
+        return "productInfo";
     }
     @RequestMapping("updateProductInfo")
     public String updateProductInfo(int productId,Model model){
@@ -87,7 +87,7 @@ public class ProductInfoController {
 
 
 
-        return "ProductInfo";
+        return "productInfo";
 
     }
 
@@ -97,7 +97,7 @@ public class ProductInfoController {
      */
     @RequestMapping("addProductInfo")
     public String addProductInfo(){
-        return "addProductInfo";
+        return "addProduct";
     }
 
     /**
@@ -117,7 +117,7 @@ public class ProductInfoController {
         List<ProductInfo> list=productInfoService.queryAllProductInfo();
         model.addAttribute("ProductInfoList",list);
 
-        return "ProductInfo";
+        return "productInfo";
     }
     @RequestMapping("queryProductInfo")
     public String queryProductInfo(String productName,Model model){
@@ -127,13 +127,9 @@ public class ProductInfoController {
 //        model.addAttribute("length",length);
         model.addAttribute("ProductInfoList",list);
 
-        return "ProductInfo";
+        return "productInfo";
     }
 
-    @RequestMapping("exit")
-    public String exit(){
-        return "login";
-    }
 
 }
 
