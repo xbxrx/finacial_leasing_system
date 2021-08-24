@@ -41,4 +41,9 @@ public class OrderInfoServiceImp implements IOrderInfoService {
         return iOrderInfoDao.deleteOrderInfo(orderId);
     }
 
+    @Override
+    public int getOrderCount() {
+        return iOrderInfoDao.getOrderCount();
+    }
+
 }
