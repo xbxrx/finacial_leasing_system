@@ -1,6 +1,9 @@
 package com.team01.dao;
 
+
 import com.team01.domain.OrderInfo;
+import com.team01.domain.Page;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -16,6 +19,8 @@ public interface IOrderInfoDao {
     public int addOrderInfo(OrderInfo orderInfo);
 
     public int deleteOrderInfo(int orderId);
+
+    public List<OrderInfo> queryByCurrentPage(@Param("page")Page page);
 
 
 }

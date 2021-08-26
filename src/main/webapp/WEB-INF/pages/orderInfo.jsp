@@ -129,24 +129,29 @@
                             <li class="am-disabled">
                                 <a href="#">«</a>
                             </li>
-                            <li class="am-active">
-                                <a href="#">1</a>
+                            <li class="am-active" onclick="amChange">
+                                <a href="toOrderInfo?currentPage=1">1</a>
                             </li>
                             <li>
-                                <a href="#">2</a>
+                                <a href="toOrderInfo?currentPage=2">2</a>
                             </li>
                             <li>
-                                <a href="#">3</a>
+                                <a href="toOrderInfo?currentPage=3">3</a>
                             </li>
                             <li>
-                                <a href="#">4</a>
+                                <a href="toOrderInfo?currentPage=4">»</a>
                             </li>
-                            <li>
-                                <a href="#">5</a>
-                            </li>
-                            <li>
-                                <a href="#">»</a>
-                            </li>
+                            <script>
+                                function amChange() {
+                                    alert("1");
+                                }
+                            </script>
+<%--                            <li>--%>
+<%--                                <a href="#">5</a>--%>
+<%--                            </li>--%>
+<%--                            <li>--%>
+<%--                                <a href="#">»</a>--%>
+<%--                            </li>--%>
                         </ul>
                     </div>
                 </div>

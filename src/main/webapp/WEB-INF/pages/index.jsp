@@ -83,7 +83,7 @@
                             <a href="productManager" target="right">产品管理</a>
                         </dd>
                         <dd>
-                            <a href="<%=basePath%>toOrderInfo" target="right">订单显示</a>
+                            <a href="<%=basePath%>toOrderInfo?currentPage=1" target="right">订单显示</a>
                         </dd>
                         <dd>
                             <a href="<%=basePath%>toInvalidOrderInfo" target="right">失效订单</a>

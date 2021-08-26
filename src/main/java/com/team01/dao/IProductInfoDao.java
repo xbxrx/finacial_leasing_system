@@ -30,6 +30,8 @@ public interface IProductInfoDao {
     // 升序排列
     public List<ProductInfo> queryAllProductInfoByAsc();
 
+    //public List<ProductInfo> queryProductInfoByCurrentPage(int currentPage);
+
 
 
 }

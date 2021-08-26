@@ -1,6 +1,7 @@
 package com.team01.service;
 
 import com.team01.domain.OrderInfo;
+import com.team01.domain.Page;
 
 import java.util.List;
 
@@ -15,6 +16,8 @@ public interface IOrderInfoService {
     public int addOrderInfo(OrderInfo orderInfo);
 
     public int deleteOrderInfo(int orderId);
+
+    public List<OrderInfo> queryByCurrentPage(Page page);
 
 
 }

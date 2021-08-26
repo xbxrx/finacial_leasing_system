@@ -2,6 +2,7 @@ package com.team01.service.impl;
 
 import com.team01.dao.IOrderInfoDao;
 import com.team01.domain.OrderInfo;
+import com.team01.domain.Page;
 import com.team01.service.IOrderInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,6 +39,10 @@ public class OrderInfoServiceImp implements IOrderInfoService {
         return iOrderInfoDao.deleteOrderInfo(orderId);
     }
 
+    @Override
+    public List<OrderInfo> queryByCurrentPage(Page page) {
+        return iOrderInfoDao.queryByCurrentPage(page);
+    }
 
 
 }

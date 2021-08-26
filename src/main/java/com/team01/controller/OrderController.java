@@ -1,6 +1,7 @@
 package com.team01.controller;
 
 import com.team01.domain.OrderInfo;
+import com.team01.domain.Page;
 import com.team01.service.IOrderInfoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,8 +22,13 @@ public class OrderController {
 //        return "index";
 //    }
     @RequestMapping("toOrderInfo")
-    public String toOrderInfo(Model model){
-        List<OrderInfo> orderInfos=orderInfoService.queryAllOrderInfo();
+    public String toOrderInfo(Model model,int currentPage){
+        //List<OrderInfo> orderInfos=orderInfoService.queryAllOrderInfo();
+        List <OrderInfo> totalInfo=orderInfoService.queryAllOrderInfo();
+        int pageCount=totalInfo.size()+1;
+        Page page =new Page(currentPage,pageCount);
+
+        List<OrderInfo> orderInfos=orderInfoService.queryByCurrentPage(page);
         model.addAttribute("orderInfos",orderInfos);
         return "orderInfo";
     }

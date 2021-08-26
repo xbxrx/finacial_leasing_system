@@ -41,6 +41,10 @@
         delete from order_list where order_id=#{orderId}
     </delete>
 
+    <select id="queryByCurrentPage" parameterType="page" resultMap="paperResultMap">
+        select *from order_list limit #{page.pageIndex},#{page.pageSize}
+    </select>
+
 
 
 

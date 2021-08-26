@@ -53,4 +53,9 @@ public class ProductInfoServiceImpl implements IProductInfoService {
     public List<ProductInfo> queryAllProductInfoByAsc() {
         return iProductInfoDao.queryAllProductInfoByAsc();
     }
+//
+//    @Override
+//    public List<ProductInfo> queryProductInfoByCurrentPage(int currentPage) {
+//        return iProductInfoDao.queryProductInfoByCurrentPage(currentPage);
+//    }
 }
