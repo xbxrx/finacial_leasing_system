@@ -29,4 +29,6 @@ public interface IProductInfoService {
 
     // 升序排列
     public List<ProductInfo> queryAllProductInfoByAsc();
+
+    public int batchDelete(int productId[]);
 }

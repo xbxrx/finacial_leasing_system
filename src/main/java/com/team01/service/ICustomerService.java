@@ -24,4 +24,8 @@ public interface ICustomerService {
 
     //  分页查询
     public List<CustomerInfo> queryByCurrentPage(Page page);
+
+    public CustomerInfo queryCustomerInfoByCheckName(String customerName);
+
+    public int batchDeleteCustomerInfo(int[] customerId);
 }

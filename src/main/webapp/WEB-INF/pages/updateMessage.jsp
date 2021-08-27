@@ -71,7 +71,7 @@
                                           data-equal-to="#doc-vld-ctn-3"
                                           rows="16"
                                           id="contentValue"
-                                ></textarea>
+                                >${messageInfo.productContent}</textarea>
                             <small>输入主体内容</small>
                         </div>
                     </div>

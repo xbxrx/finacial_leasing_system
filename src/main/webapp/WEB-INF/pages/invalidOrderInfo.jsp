@@ -33,13 +33,13 @@
 
     <div class="am-g">
         <div class="am-u-sm-12 am-u-md-3">
-
+            <button class="am-btn am-btn-default" onclick="fun()" style="width: 86px;margin-left: 10px" >批量删除</button>
         </div>
 
     </div>
     <div class="am-g">
         <div class="am-u-sm-12">
-            <form class="am-form">
+            <form class="am-form" action="deleteSelectedInvalidOrderInfo" id="Form">
                 <table class="am-table am-table-striped am-table-hover table-main">
                     <thead>
                     <tr>
@@ -60,7 +60,7 @@
                     <c:when test="${null != orderInfos}">
                         <c:forEach items="${orderInfos}" var="item">
                             <tr>
-                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox" name="ids" value="${item.orderId}"></td>
                                 <td>${item.orderId}</td>
                                 <td>
                                     ${item.productId}
@@ -138,6 +138,32 @@
             window.event.returnValue = false;
         }
     }
+
+    function fun() {
+        if (confirm("确认要删除选中条数？")) {
+            var flag=false;
+            var name = document.getElementsByName("ids");
+            for (var i = 0; i < name.length; i++) {
+                if(name[i].checked){
+                    //有一个条目选中了
+                    flag=true;
+                    break;
+                }
+            }
+            if (flag){//有删除的条目被选中需要删除
+                //提交表单
+
+                document.getElementById("Form").submit();
+            }
+        }
+    }
+
+    var message="${Message}";
+    if(message!=null&&message!=''&&message!=undefined&&message!='null'){
+        alert(message);
+    }
 </script>
+
+
 </body>
 </html>

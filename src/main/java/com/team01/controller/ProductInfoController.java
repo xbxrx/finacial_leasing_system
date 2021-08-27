@@ -7,6 +7,7 @@ import com.team01.service.IProductInfoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import javax.jws.WebParam;
@@ -120,6 +121,8 @@ public class ProductInfoController {
         List<ProductInfo> list=productInfoService.queryProductInfo(productName);
 //        int length=list.size();
 //        model.addAttribute("length",length);
+        if ("".equals(productName))
+            model.addAttribute("Message","请输入关键字!");
         model.addAttribute("ProductInfoList",list);
 
         return "productInfo";
@@ -147,6 +150,20 @@ public class ProductInfoController {
         List<ProductInfo> list=productInfoService.queryAllProductInfoByAsc();
         model.addAttribute("ProductInfoList",list);
         return "productInfo";
+    }
+
+    @RequestMapping("deleteSelectedProductInfo")
+    public String  deleteSelectedProductInfo(@RequestParam(name="ids")int[] productId, Model model){
+
+
+
+        int count=productInfoService.batchDelete(productId);
+
+        List<ProductInfo> list=productInfoService.queryAllProductInfo();
+        model.addAttribute("ProductInfoList",list);
+        model.addAttribute("Message","已删除"+count+"条信息");
+        return "productInfo";
+
     }
 
 

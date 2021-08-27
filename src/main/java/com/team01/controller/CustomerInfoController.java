@@ -8,6 +8,7 @@ import com.team01.service.ICustomerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -51,12 +52,10 @@ public class CustomerInfoController {
         customerInfo.setConsumeTotal(consumeTotal);
 
 
-        List<CustomerInfo> list = customerService.queryAllCustomerInfo();
-        model.addAttribute("CustomerInfoList", list);
+
         CustomerInfo customerInfoCheck=customerService.queryCustomerInfoByCheckName(customerName);
         if(customerInfoCheck==null) {
             int i = customerService.addCustomerInfo(customerInfo);
-
             if (i > 0) {
                 model.addAttribute("Message", "客户" + customerName + "信息添加成功");
             } else {
@@ -66,6 +65,8 @@ public class CustomerInfoController {
         {
             model.addAttribute("Message","客户"+customerName+"信息存在");
         }
+        List<CustomerInfo> list = customerService.queryByCurrentPage(new Page(1,7));
+        model.addAttribute("CustomerInfoList", list);
         return "customerInfo";
     }
 
@@ -81,7 +82,8 @@ public class CustomerInfoController {
     public String deleteCustomerInfo(int customerId,String customerName, Model model) {
 
         int i = customerService.deleteCustomerInfo(customerId);
-        List<CustomerInfo> list = customerService.queryAllCustomerInfo();
+//        List<CustomerInfo> list = customerService.queryAllCustomerInfo();
+        List<CustomerInfo> list=customerService.queryByCurrentPage(new Page(1,7));
         model.addAttribute("CustomerInfoList", list);
         if (i > 0) {
            model.addAttribute("Message","编号为"+customerId+"客户删除成功");
@@ -93,9 +95,9 @@ public class CustomerInfoController {
     public String deleteSelectedCustomerInfo(@RequestParam(name = "ids") int[] customerId, Model model) {
 
         int count = customerService.batchDeleteCustomerInfo(customerId);
-        List<CustomerInfo> list = customerService.queryAllCustomerInfo();
+        //List<CustomerInfo> list = customerService.queryAllCustomerInfo();
+        List<CustomerInfo> list=customerService.queryByCurrentPage(new Page(1,7));
         model.addAttribute("CustomerInfoList", list);
-
         model.addAttribute("Message","已成功删除"+count+"条客户信息!");
         return "customerInfo";
     }

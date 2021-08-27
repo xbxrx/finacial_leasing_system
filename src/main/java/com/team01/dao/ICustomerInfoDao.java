@@ -26,6 +26,9 @@ public interface ICustomerInfoDao {
 
     public List<CustomerInfo> queryByCurrentPage(@Param("page") Page page);
 
+    public CustomerInfo queryCustomerInfoByCheckName(String customerName);
+
+
 
 
 }

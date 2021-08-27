@@ -6,6 +6,7 @@ import com.team01.service.IOrderInfoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -58,6 +59,17 @@ public class OrderController {
         List<OrderInfo> orderInfos=orderInfoService.queryByCurrentPage(new Page(1,7));
         model.addAttribute("orderInfos",orderInfos);
         return "orderInfo";
+    }
+    @RequestMapping("deleteSelectedInvalidOrderInfo")
+    public String deleteSelectedInvalidOrderInfo(@RequestParam(name = "ids") int [] orderId, Model model){
+        int count=orderInfoService.batchDeleteOrderInfo(orderId);
+        System.out.println(count);
+
+        List<OrderInfo> list=orderInfoService.queryAllOrderInfo();
+        model.addAttribute("Message","删除了"+count+"条记录");
+        List<OrderInfo> orderInfos=orderInfoService.queryAllOrderInfo();
+        model.addAttribute("orderInfos",orderInfos);
+        return "invalidOrderInfo";
     }
 
 

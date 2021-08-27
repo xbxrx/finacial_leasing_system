@@ -53,6 +53,17 @@ public class ProductInfoServiceImpl implements IProductInfoService {
     public List<ProductInfo> queryAllProductInfoByAsc() {
         return iProductInfoDao.queryAllProductInfoByAsc();
     }
+
+    @Override
+    public int batchDelete(int[] productId) {
+        int count=0;
+        for (int id:productId)
+        {
+            iProductInfoDao.deleteProductInfo(id);
+            count++;
+        }
+        return count;
+    }
 //
 //    @Override
 //    public List<ProductInfo> queryProductInfoByCurrentPage(int currentPage) {

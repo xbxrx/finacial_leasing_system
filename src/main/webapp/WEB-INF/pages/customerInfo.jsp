@@ -34,7 +34,9 @@
             <div class="am-btn-toolbar">
                 <div class="am-btn-group am-btn-group-xs">
                     <button type="button" class="am-btn am-btn-default"><span class="am-icon-plus"></span>
-                        <a href="addCustomerInfo">客户添加</a> </button>
+                        <a href="addCustomerInfo">客户添加</a>
+                    </button>
+                    <button class="am-btn am-btn-default" onclick="fun()" style="width: 86px;margin-left: 10px" >批量删除</button>
                 </div>
             </div>
         </div>
@@ -60,7 +62,7 @@
                     <thead>
 
                     <tr>
-                        <th class="table-check"><input type="checkbox"></th>
+                        <th class="table-check"><input type="checkbox" ></th>
                         <th class="table-id" style="width: 150px">客户编号</th>
                         <th class="table-title" style="width: 150px">客户名</th>
                         <th class="table-type" style="width: 150px">客户电话</th>
@@ -75,7 +77,7 @@
 
                     <c:forEach items="${CustomerInfoList}" var="item">
                     <tr>
-                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox" id="ids" value="${item.customerId}" name="ids"></td>
                         <td>${item.customerId}</td>
                         <td>${item.customerName}</td>
                         <td>${item.customerPhone}</td>
@@ -132,7 +134,34 @@
         localStorage.setItem("amLL", document.querySelector("#amLL").value);
         document.getElementById('Form').submit();
     }
+
+    function fun() {
+        if (confirm("确认要删除选中条数？")) {
+            var flag=false;
+            var name = document.getElementsByName("ids");
+            for (var i = 0; i < name.length; i++) {
+                if(name[i].checked){
+                    //有一个条目选中了
+                    flag=true;
+                    break;
+                }
+            }
+            if (flag){//有删除的条目被选中需要删除
+                //提交表单
+                document.getElementById("Form").action="deleteSelectedCustomerInfo";
+                localStorage.setItem("ids", document.querySelector("#ids").value);
+                document.getElementById("Form").submit();
+            }
+        }
+    }
+
+    var message="${Message}";
+    if(message!=null&&message!=''&&message!=undefined&&message!='null'){
+        alert(message);
+    }
+
 </script>
+
 
 
 </body>

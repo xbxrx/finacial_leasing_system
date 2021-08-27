@@ -45,4 +45,19 @@ public class CustomerServiceImpl implements ICustomerService {
     public List<CustomerInfo> queryByCurrentPage(Page page) {
         return iCustomerInfoDao.queryByCurrentPage(page);
     }
+
+    @Override
+    public CustomerInfo queryCustomerInfoByCheckName(String customerName) {
+        return iCustomerInfoDao.queryCustomerInfoByCheckName(customerName);
+    }
+
+    @Override
+    public int batchDeleteCustomerInfo(int[] customerId) {
+        int count=0;
+        for(int id:customerId){
+            iCustomerInfoDao.deleteCustomerInfo(id);
+            count++;
+        }
+        return count;
+    }
 }
