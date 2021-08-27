@@ -64,9 +64,7 @@
                 </div>
             </div>
         </div>
-        <div class="am-u-sm-12 am-u-md-3">
 
-        </div>
         <div class="am-u-sm-12 am-u-md-3">
             <div class="am-input-group am-input-group-sm">
                 <form action="queryProductInfo" method="post" class="am-input-group am-input-group-sm" >

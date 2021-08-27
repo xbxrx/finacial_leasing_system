@@ -32,11 +32,15 @@
     <hr>
 
     <div class="am-g">
-        <div class="am-u-sm-12 am-u-md-3">
-            <button class="am-btn am-btn-default" onclick="fun()" style="width: 86px;margin-left: 10px" >批量删除</button>
+        <div class="am-u-sm-12 am-u-md-6">
+            <div class="am-btn-toolbar">
+                <div class="am-btn-group am-btn-group-xs">
+                    <button class="am-btn am-btn-default" onclick="fun()" style="width: 86px" >批量删除</button>
+                </div>
+            </div>
         </div>
-
     </div>
+
     <div class="am-g">
         <div class="am-u-sm-12">
             <form class="am-form" action="deleteSelectedInvalidOrderInfo" id="Form">
@@ -67,10 +71,10 @@
                                 </td>
                                 <td>${item.customerId}</td>
                                 <td>
-                                    <a href="#">${item.productName}</a>
+                                    ${item.productName}
                                 </td>
                                 <td class="am-hide-sm-only">
-                                    <a href="#">${item.customerName}</a>
+                                 ${item.customerName}
                                 </td>
                                 <td class="am-hide-sm-only">
                                         ${item.startTime}</td>

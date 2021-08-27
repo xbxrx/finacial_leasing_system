@@ -68,7 +68,7 @@
                         <div class="am-u-sm-9">
                                 <textarea name="introduceContent"  placeholder="请输入产品介绍"
                                           data-equal-to="#doc-vld-ctn-3"
-                                          rows="16"></textarea>
+                                          rows="16">${ProductInfo.introduceContent}</textarea>
                             <small>输入产品介绍</small>
                         </div>
                     </div>

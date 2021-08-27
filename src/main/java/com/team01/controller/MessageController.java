@@ -31,7 +31,13 @@ public class MessageController {
     @RequestMapping("toAddMessageResult")
     public String addMessageResult(String messageTitle,String authorName,String productContent,Model model){
         MessageInfo messageInfo=new MessageInfo(messageTitle,authorName,productContent);
-        messageInfoService.addMessageInfo(messageInfo);
+
+        int i= messageInfoService.addMessageInfo(messageInfo);
+        if (i>0){
+            model.addAttribute("Message","标题为"+messageTitle+"作者为"+authorName+"信息添加成功");
+        }else{
+            model.addAttribute("Message","标题为"+messageTitle+"作者为"+authorName+"信息添加失败");
+        }
         List<MessageInfo> messageInfos=messageInfoService.queryAllMessageInfo();
         model.addAttribute("messageInfos",messageInfos);
         return "messageInfo";
@@ -54,7 +60,14 @@ public class MessageController {
     @RequestMapping("toDeleteMessage")
     public String deleteMessage(Model model,int messageId){
         System.out.println("messageId="+messageId);
-        messageInfoService.deleteMessageInfo(messageId);
+
+        int i= messageInfoService.deleteMessageInfo(messageId);
+        if(i>0){
+            model.addAttribute("Message","信息号为"+messageId+"的信息删除成功");
+        }else
+        {
+            model.addAttribute("Message","信息号为"+messageId+"的信息删除失败");
+        }
         List<MessageInfo> messageInfos=messageInfoService.queryAllMessageInfo();
         model.addAttribute("messageInfos",messageInfos);
         return "messageInfo";
@@ -71,7 +84,13 @@ public class MessageController {
     public String updateMessageResult(Model model,int messageId,String messageTitle,String authorName,String productContent){
         MessageInfo messageInfo=new MessageInfo(messageTitle,authorName,productContent);
         messageInfo.setMessageId(messageId);
-        messageInfoService.updateMessageInfo(messageInfo);
+
+       int i= messageInfoService.updateMessageInfo(messageInfo);
+       if(i>0){
+           model.addAttribute("Message","信息号为"+messageId+"的信息更新成功");
+       }else{
+           model.addAttribute("Message","信息号为"+messageId+"的信息更新失败");
+       }
         List<MessageInfo> messageInfos=messageInfoService.queryAllMessageInfo();
         model.addAttribute("messageInfos",messageInfos);
         return "messageInfo";

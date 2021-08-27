@@ -57,7 +57,14 @@ public class ProductInfoController {
      */
     @RequestMapping("deleteProductInfo")
     public String deleteProductInfo(int productId, Model model){
+       ProductInfo productInfo= productInfoService.queryById(productId);
         int i=productInfoService.deleteProductInfo(productId);
+        if(i>0){
+            model.addAttribute("Message", productInfo.getProductName()+"产品删除成功!");
+        }
+        else{
+            model.addAttribute("Message"+productInfo.getProductName()+"产品删除失败");
+        }
         List<ProductInfo> list=productInfoService.queryAllProductInfo();
         model.addAttribute("ProductInfoList",list);
         return "productInfo";
@@ -79,11 +86,14 @@ public class ProductInfoController {
         productInfo.setIntroduceContent(introduceContent);
         int i= productInfoService.updateProductInfo(productInfo);
 
+        if (i>0){
+            model.addAttribute("Message",productName+"产品更新成功");
+        }
+        else{
+            model.addAttribute("Message",productName+"产品更新失败！");
+        }
         List<ProductInfo> list=productInfoService.queryAllProductInfo();
         model.addAttribute("ProductInfoList",list);
-
-
-
         return "productInfo";
 
     }
@@ -109,12 +119,26 @@ public class ProductInfoController {
         productInfo.setProductType(productType);
         productInfo.setProductPrice(productPrice);
         productInfo.setIntroduceContent(introduceContent);
-        productInfoService.addProductInfo(productInfo);
+
+        ProductInfo productInfoCheck=productInfoService.queryByProductName(productName);
+
+        if (productInfoCheck==null){
+            int i=productInfoService.addProductInfo(productInfo);
+            if(i>0){
+                model.addAttribute("Message",productName+"添加成功");
+            }else{
+                model.addAttribute("Message",productName+"添加失败");
+            }
+              }
+        else {
+            model.addAttribute("Message",productName+"产品存在！无法添加!");
+        }
         List<ProductInfo> list=productInfoService.queryAllProductInfo();
         model.addAttribute("ProductInfoList",list);
-
         return "productInfo";
-    }
+            }
+
+
     @RequestMapping("queryProductInfo")
     public String queryProductInfo(String productName,Model model){
 

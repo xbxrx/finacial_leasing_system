@@ -79,15 +79,14 @@ public class CustomerInfoController {
     }
 
     @RequestMapping("deleteCustomerInfo")
-    public String deleteCustomerInfo(int customerId,String customerName, Model model) {
-
+    public String deleteCustomerInfo(int customerId, Model model) {
         int i = customerService.deleteCustomerInfo(customerId);
-//        List<CustomerInfo> list = customerService.queryAllCustomerInfo();
-        List<CustomerInfo> list=customerService.queryByCurrentPage(new Page(1,7));
-        model.addAttribute("CustomerInfoList", list);
+
         if (i > 0) {
            model.addAttribute("Message","编号为"+customerId+"客户删除成功");
         }
+        List<CustomerInfo> list=customerService.queryByCurrentPage(new Page(1,7));
+        model.addAttribute("CustomerInfoList", list);
         return "customerInfo";
     }
 

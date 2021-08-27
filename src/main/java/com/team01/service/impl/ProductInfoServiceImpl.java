@@ -64,6 +64,11 @@ public class ProductInfoServiceImpl implements IProductInfoService {
         }
         return count;
     }
+
+    @Override
+    public ProductInfo queryByProductName(String productName) {
+        return iProductInfoDao.queryByProductName(productName);
+    }
 //
 //    @Override
 //    public List<ProductInfo> queryProductInfoByCurrentPage(int currentPage) {

@@ -105,7 +105,7 @@
                     <div class="am-form-group" >
                         <div class="am-u-sm-9 am-u-sm-push-3">
                             <input type="submit" class="am-btn am-btn-success" value="上传" />
-                            <a href="<%=basePath%>toOrderInfo">
+                            <a href="<%=basePath%>toOrderInfo?currentPage=1">
                                 <input type="button" class="am-btn am-btn-success"  value="返回" />
                             </a>
                         </div>

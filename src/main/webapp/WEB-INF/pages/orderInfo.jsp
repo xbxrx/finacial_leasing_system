@@ -86,10 +86,10 @@
                                 <td>${item.productId}</td>
                                 <td>${item.customerId}</td>
                                 <td>
-                                    <a href="#">${item.productName}</a>
+                                    ${item.productName}
                                 </td>
                                 <td class="am-hide-sm-only">
-                                    <a href="#">${item.customerName}</a>
+                                    ${item.customerName}
                                 </td>
                                 <td class="am-hide-sm-only">${item.startTime}</td>
                                 <td class="am-hide-sm-only">${item.endTime}</td>

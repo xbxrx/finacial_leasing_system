@@ -60,6 +60,12 @@
             order by product_price asc
         </select>
 
+    <select id="queryByProductName" parameterType="String" resultType="com.team01.domain.ProductInfo">
+        select *
+        from product_list
+        where product_name=#{productName}
+    </select>
+
 
 
 

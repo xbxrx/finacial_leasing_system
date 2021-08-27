@@ -31,4 +31,6 @@ public interface IProductInfoService {
     public List<ProductInfo> queryAllProductInfoByAsc();
 
     public int batchDelete(int productId[]);
+
+    public ProductInfo queryByProductName(String productName);
 }

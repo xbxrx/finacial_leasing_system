@@ -40,7 +40,10 @@ public class OrderController {
 
     @RequestMapping("toDeleteOrder")
     public String deleteOrder(int orderId,Model model){
-        orderInfoService.deleteOrderInfo(orderId);
+       int i= orderInfoService.deleteOrderInfo(orderId);
+       if (i>0){
+           model.addAttribute("Message","编号为"+orderId+"订单删除成功!");
+       }
         List<OrderInfo> orderInfos=orderInfoService.queryByCurrentPage(new Page(1,7));
         model.addAttribute("orderInfos",orderInfos);
         return "orderInfo";
@@ -55,7 +58,14 @@ public class OrderController {
     public String addOrder(int productId,int customerId,String productName,String customerName,String startTime,
     String endTime,int rentTotal,Model model){
         OrderInfo orderInfo=new OrderInfo(productId,customerId,productName,customerName,startTime,endTime,rentTotal);
-        orderInfoService.addOrderInfo(orderInfo);
+        int i= orderInfoService.addOrderInfo(orderInfo);
+
+        if(i>0){
+            model.addAttribute("Message","编号为"+orderInfo.getOrderId()+"，"+"客户为"+customerName+"订单添加成功");
+        }
+        else{
+            model.addAttribute("Message","添加失败!");
+        }
         List<OrderInfo> orderInfos=orderInfoService.queryByCurrentPage(new Page(1,7));
         model.addAttribute("orderInfos",orderInfos);
         return "orderInfo";
@@ -63,8 +73,6 @@ public class OrderController {
     @RequestMapping("deleteSelectedInvalidOrderInfo")
     public String deleteSelectedInvalidOrderInfo(@RequestParam(name = "ids") int [] orderId, Model model){
         int count=orderInfoService.batchDeleteOrderInfo(orderId);
-        System.out.println(count);
-
         List<OrderInfo> list=orderInfoService.queryAllOrderInfo();
         model.addAttribute("Message","删除了"+count+"条记录");
         List<OrderInfo> orderInfos=orderInfoService.queryAllOrderInfo();
