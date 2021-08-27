@@ -31,7 +31,7 @@
 
     <update id="updateProductInfo" parameterType="com.team01.domain.ProductInfo">
             update product_list
-            set product_name=#{productName},product_type=#{productType},product_status=#{productStatus},product_price=#{productPrice}
+            set product_name=#{productName},product_type=#{productType},product_status=#{productStatus},product_price=#{productPrice},introduce_content=#{introduceContent}
             where product_id=#{productId}
         </update>
 
@@ -39,7 +39,7 @@
     <select id="queryProductInfo" parameterType="String" resultMap="paperResultMap">
         select *
         from product_list
-        where product_name like "%"#{ProductName}"%"
+        where product_name like "%"#{productName}"%"
     </select>
 
     <select id="queryById" parameterType="int" resultType="com.team01.domain.ProductInfo">
@@ -59,6 +59,13 @@
             from product_list
             order by product_price asc
         </select>
+
+    <select id="queryByProductName" parameterType="String" resultType="com.team01.domain.ProductInfo">
+        select *
+        from product_list
+        where product_name=#{productName}
+    </select>
+
 
 
 

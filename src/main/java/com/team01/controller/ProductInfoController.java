@@ -4,9 +4,11 @@ package com.team01.controller;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import com.team01.domain.ProductInfo;
 import com.team01.service.IProductInfoService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import javax.jws.WebParam;
@@ -57,8 +59,13 @@ public class ProductInfoController {
     @RequestMapping("deleteProductInfo")
     public String deleteProductInfo(int productId, Model model){
         int i=productInfoService.deleteProductInfo(productId);
-        List<ProductInfo> list=productInfoService.queryAllProductInfo();
-        model.addAttribute("ProductInfoList",list);
+        List<ProductInfo> list = productInfoService.queryAllProductInfo();
+        model.addAttribute("ProductInfoList", list);
+        if(i>0) {
+            model.addAttribute("Message","删除记录成功");
+        }else{
+            model.addAttribute("Message","删除记录失败");
+        }
         return "productInfo";
     }
     @RequestMapping("updateProductInfo")
@@ -68,7 +75,7 @@ public class ProductInfoController {
         return "updateProductInfo";
     }
     @RequestMapping("resultUpdateProductInfo")
-    public String resultUpdateProductInfo(int productId,String productName,String productStatus,String productType,String introduceContent,int productPrice,Model model){
+    public String resultUpdateProductInfo(int productId,String productName,String productStatus,String productType,int productPrice,String introduceContent,Model model){
         ProductInfo productInfo=new ProductInfo();
         productInfo.setProductId(productId);
         productInfo.setProductName(productName);
@@ -77,11 +84,13 @@ public class ProductInfoController {
         productInfo.setProductPrice(productPrice);
         productInfo.setIntroduceContent(introduceContent);
         int i= productInfoService.updateProductInfo(productInfo);
-
-        List<ProductInfo> list=productInfoService.queryAllProductInfo();
-        model.addAttribute("ProductInfoList",list);
-
-
+        List<ProductInfo> list = productInfoService.queryAllProductInfo();
+        model.addAttribute("ProductInfoList", list);
+        if (i>0) {
+            model.addAttribute("Message",productInfo.getProductName()+"更新成功");
+        }else{
+            model.addAttribute("Message",productInfo.getProductName()+"更新失败");
+        }
 
         return "productInfo";
 
@@ -108,10 +117,25 @@ public class ProductInfoController {
         productInfo.setProductType(productType);
         productInfo.setProductPrice(productPrice);
         productInfo.setIntroduceContent(introduceContent);
-        productInfoService.addProductInfo(productInfo);
-        List<ProductInfo> list=productInfoService.queryAllProductInfo();
-        model.addAttribute("ProductInfoList",list);
 
+        ProductInfo productInfoCheck=productInfoService.queryByProductName(productName);
+        if (productInfoCheck==null) {
+            int j=productInfoService.addProductInfo(productInfo);
+            if(j>0){
+                model.addAttribute("Message","添加成功!");
+                List<ProductInfo> list = productInfoService.queryAllProductInfo();
+                model.addAttribute("ProductInfoList", list);
+            }else{
+                model.addAttribute("Message","添加失败");
+                List<ProductInfo> list = productInfoService.queryAllProductInfo();
+                model.addAttribute("ProductInfoList", list);
+            }
+        }else {
+
+            List<ProductInfo> list = productInfoService.queryAllProductInfo();
+            model.addAttribute("ProductInfoList", list);
+            model.addAttribute("Message","产品存在，无法添加!");
+        }
         return "productInfo";
     }
     @RequestMapping("queryProductInfo")
@@ -121,6 +145,9 @@ public class ProductInfoController {
 //        int length=list.size();
 //        model.addAttribute("length",length);
         model.addAttribute("ProductInfoList",list);
+        if (list.isEmpty()){
+            model.addAttribute("Message","没有相应查找对象");
+        }
 
         return "productInfo";
     }
@@ -148,6 +175,21 @@ public class ProductInfoController {
         model.addAttribute("ProductInfoList",list);
         return "productInfo";
     }
+    @RequestMapping("deleteSelectedProductInfo")
+    public String  deleteSelectedProductInfo(@RequestParam(name="ids")int[] productId,Model model){
+
+
+
+        int count=productInfoService.batchDelete(productId);
+
+        List<ProductInfo> list=productInfoService.queryAllProductInfo();
+        model.addAttribute("ProductInfoList",list);
+        model.addAttribute("Message","已删除"+count+"条信息");
+        return "productInfo";
+
+    }
+
+   
 
 
 }

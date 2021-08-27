@@ -1,8 +1,6 @@
 package com.team01.dao;
 
 import com.team01.domain.CustomerInfo;
-import com.team01.domain.Page;
-import org.apache.ibatis.annotations.Param;
 
 
 import java.util.List;
@@ -24,7 +22,10 @@ public interface ICustomerInfoDao {
     //  客户删除
     public int deleteCustomerInfo(int customerId);
 
-    public List<CustomerInfo> queryByCurrentPage(@Param("page") Page page);
+    //通过姓名查询
+    public CustomerInfo queryCustomerInfoByCheckName(String customerName);
+
+
 
 
 
