@@ -23,20 +23,20 @@ public class ProductInfoController {
         return "performance";
     }
 
-    @RequestMapping("datavs3")
-    public String datavs3(){
-        return "datavs3";
-    }
-
-    @RequestMapping("datavs4")
-    public String datavs4(){
-        return "datavs4";
-    }
-
-    @RequestMapping("datavs2")
-    public String datavs2(){
-        return "datavs2";
-    }
+//    @RequestMapping("datavs3")
+//    public String datavs3(){
+//        return "datavs3";
+//    }
+//
+//    @RequestMapping("datavs4")
+//    public String datavs4(){
+//        return "datavs4";
+//    }
+//
+//    @RequestMapping("datavs2")
+//    public String datavs2(){
+//        return "datavs2";
+//    }
 
     /**
      *
