@@ -44,16 +44,5 @@ public class OrderInfoServiceImp implements IOrderInfoService {
         return iOrderInfoDao.queryByCurrentPage(page);
     }
 
-    @Override
-    public int batchDeleteOrderInfo(int[] orderId) {
-        int count=0;
-        for (int id:orderId)
-        {
-            iOrderInfoDao.deleteOrderInfo(id);
-            count++;
-        }
-        return count;
-    }
-
 
 }

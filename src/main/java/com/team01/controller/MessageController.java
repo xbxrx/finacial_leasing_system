@@ -6,7 +6,6 @@ import com.team01.service.IMessageInfoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -76,13 +75,6 @@ public class MessageController {
         model.addAttribute("messageInfos",messageInfos);
         return "messageInfo";
     }
-    @RequestMapping("batchDeleteMessageInfo")
-    public String batchDeleteMessageInfo(@RequestParam(name = "ids") int[] messageId,Model model){
-        int count=messageInfoService.batchDeleteMessageInfo(messageId);
-        List<MessageInfo> messageInfos=messageInfoService.queryAllMessageInfo();
-        model.addAttribute("messageInfos",messageInfos);
-        model.addAttribute("Message","共删除"+count+"条信息");
-        return "messageInfo";
-    }
+
 
 }

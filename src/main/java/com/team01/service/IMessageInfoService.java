@@ -17,6 +17,4 @@ public interface IMessageInfoService {
     public MessageInfo queryByMessageId(int messageId);
 
     public int updateMessageInfo(MessageInfo messageInfo);
-
-    public int batchDeleteMessageInfo(int[] messageId);
 }

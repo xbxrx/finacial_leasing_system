@@ -40,7 +40,6 @@
                             <a href="<%=basePath%>toAddMessage">新增</a>
                         </span>
                     </button>
-                    <button class="am-btn am-btn-default" onclick="fun()" style="width: 86px;margin-left: 10px"  >批量删除</button>
                 </div>
             </div>
         </div>
@@ -61,7 +60,7 @@
     </div>
     <div class="am-g">
         <div class="am-u-sm-12">
-            <form class="am-form" action="batchDeleteMessageInfo" id="Form">
+            <form class="am-form">
                 <table class="am-table am-table-striped am-table-hover table-main">
                     <thead>
                     <tr>
@@ -77,7 +76,7 @@
                     <c:when test="${null != messageInfos}">
                         <c:forEach items="${messageInfos}" var="item">
                             <tr>
-                                <td><input type="checkbox" name="ids"></td>
+                                <td><input type="checkbox"></td>
                                 <td>
                                     <a href="toQueryByMessageId?messageId=${item.messageId}">${item.messageTitle}</a>
                                 </td>
@@ -154,36 +153,6 @@
             window.event.returnValue = false;
         }
     }
-</script>
-
-<script language="javascript">
-    function fun() {
-        if (confirm("确认要删除选中条数？")) {
-            var flag=false;
-            var name = document.getElementsByName("ids");
-            for (var i = 0; i < name.length; i++) {
-                if(name[i].checked){
-                    //有一个条目选中了
-                    flag=true;
-                    break;
-                }
-            }
-            if (flag){//有删除的条目被选中需要删除
-                //提交表单
-                // document.getElementById("Form").action="deleteSelectedProductInfo";
-                document.getElementById("Form").submit();
-            }
-        }
-    }
-</script>
-
-<script>
-    var message="${Message}";
-    if(message!=null&&message!=''&&message!=undefined&&message!='null'){
-        alert(message);
-    }
-
-
 </script>
 </body>
 </html>
