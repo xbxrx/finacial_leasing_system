@@ -66,9 +66,9 @@
                         <label class="am-u-sm-3 am-form-label">
                             产品介绍 </label>
                         <div class="am-u-sm-9">
-                                <textarea   name="introduceContent"  placeholder="请输入产品介绍"
+                                <textarea name="introduceContent"  placeholder="请输入产品介绍"
                                           data-equal-to="#doc-vld-ctn-3"
-                                          rows="16">${ProductInfo.introduceContent}</textarea>
+                                          rows="16"></textarea>
                             <small>输入产品介绍</small>
                         </div>
                     </div>

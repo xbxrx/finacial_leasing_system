@@ -36,8 +36,8 @@ public class AdminInfoController {
            return "login";
        }
     }
-    @RequestMapping("toLogout")
-    public String toLogout(HttpServletRequest request){
+    @RequestMapping("tologout")
+    public String tologout(HttpServletRequest request){
         Enumeration em = request.getSession().getAttributeNames();
         while(em.hasMoreElements()){
             request.getSession().removeAttribute(em.nextElement().toString());

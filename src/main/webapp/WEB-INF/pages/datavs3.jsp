@@ -71,6 +71,7 @@
 
 
 
+
     option = {
         tooltip: {
             trigger: 'axis',

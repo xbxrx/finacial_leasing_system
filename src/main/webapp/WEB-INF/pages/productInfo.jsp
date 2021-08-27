@@ -26,15 +26,15 @@
         }
         #moneydateAA {
             position: absolute;
-            top: 67%;
-            right: 100px;
+            top: 57%;
+            right: 120px;
             border: 5px solid;
             border-color: #0e90d2 transparent  transparent  transparent;
         }
         #moneydateBB {
             position: absolute;
-            top: 45%;
-            right: 100px;
+            top: 25%;
+            right: 120px;
             border: 5px solid;
             border-color: transparent transparent  #0e90d2  transparent;
         }
@@ -58,18 +58,11 @@
         <div class="am-u-sm-12 am-u-md-6">
             <div class="am-btn-toolbar">
                 <div class="am-btn-group am-btn-group-xs">
-
                     <button type="button" class="am-btn am-btn-default"><span class="am-icon-plus"></span>
-                        <a href="addProductInfo">产品添加</a>
-                    </button>
-
-                    <button class="am-btn am-btn-default" onclick="fun()" style="width: 86px;margin-left: 10px"  >批量删除</button>
-
-
+                        <a href="addProductInfo">产品添加</a> </button>
                 </div>
             </div>
         </div>
-
         <div class="am-u-sm-12 am-u-md-3">
 
         </div>
@@ -78,23 +71,20 @@
                 <form action="queryProductInfo" method="post" class="am-input-group am-input-group-sm" >
                     <input type="text" class="am-form-field" id="ProductName" name="productName" placeholder="请输入想要查看产品关键字">
                     <span class="am-input-group-btn">
-                        <button class="am-btn am-btn-default" type="submit" >搜索</button>
-                    </span>
+            <button class="am-btn am-btn-default" type="submit" >搜索</button>
+          </span>
                 </form>
-
-
             </div>
         </div>
     </div>
     <div class="am-g">
         <div class="am-u-sm-12">
-            <form class="am-form" action="deleteSelectedProductInfo" id="Form">
+            <form class="am-form">
                 <table class="am-table am-table-striped am-table-hover table-main">
                     <thead>
 
                     <tr>
-                        <th class="table-check">
-<%--                        <input type="checkbox"></th>--%>
+                        <th class="table-check"><input type="checkbox"></th>
                         <th class="table-id">编号</th>
                         <th class="table-title">产品名称</th>
                         <th class="table-type">产品状态</th>
@@ -103,8 +93,8 @@
                           <a href="queryAllProductInfoByDesc" > <div  id="moneydateAA"> </div></a>
                             <a href="queryAllProductInfoByAsc" > <div  id="moneydateBB"> </div></a>
                         </th>
-                        <th class="table-set">操作</th>
 
+                        <th class="table-set">操作</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -112,8 +102,8 @@
                     <c:forEach items="${ProductInfoList}" var="item">
 
 
-                    <tr name="idsFather">
-                        <td><input type="checkbox" name="ids" value="${item.productId}" ></td>
+                    <tr>
+                        <td><input type="checkbox"></td>
                         <td>${item.productId}</td>
                         <td>
                             <a href="toQueryByProductId?productId=${item.productId}">${item.productName}</a>
@@ -132,7 +122,6 @@
                                         </span>
                                     </button>
 
-
                                 </div>
                             </div>
                         </td>
@@ -146,8 +135,8 @@
                     共 ${ProductInfoList.size()} 条记录
                     <div class="am-fr">
                         <ul class="am-pagination">
-                            <li ><a href="#">«</a></li>
-                            <li ><a href="queryByPage1?page=1">1</a></li>
+                            <li><a href="#">«</a></li>
+                            <li><a href="#">1</a></li>
                             <li><a href="#">2</a></li>
                             <li><a href="#">3</a></li>
                             <li><a href="#">4</a></li>
@@ -158,11 +147,9 @@
                 </div>
                 <hr>
             </form>
-
         </div>
     </div>
 </div>
-
 
 <script language="javascript">
     function del() {
@@ -171,42 +158,6 @@
         }
     }
 </script>
-
-
-<script language="javascript">
-    function fun() {
-        if (confirm("确认要删除选中条数？")) {
-            var flag=false;
-            var name = document.getElementsByName("ids");
-            for (var i = 0; i < name.length; i++) {
-                if(name[i].checked){
-                    //有一个条目选中了
-                    flag=true;
-                    break;
-                }
-            }
-            if (flag){//有删除的条目被选中需要删除
-                //提交表单
-                // document.getElementById("Form").action="deleteSelectedProductInfo";
-                document.getElementById("Form").submit();
-            }
-        }
-    }
-</script>
-
-<script>
-    var message="${Message}";
-    if(message!=null&&message!=''&&message!=undefined&&message!='null'){
-        alert(message);
-    }
-
-
-</script>
-
-
-
-
-
 
 
 </body>
