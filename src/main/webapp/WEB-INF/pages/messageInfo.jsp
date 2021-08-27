@@ -77,7 +77,7 @@
                     <c:when test="${null != messageInfos}">
                         <c:forEach items="${messageInfos}" var="item">
                             <tr>
-                                <td><input type="checkbox" name="ids" value="${item.messageId}"></td>
+                                <td><input type="checkbox" name="ids"></td>
                                 <td>
                                     <a href="toQueryByMessageId?messageId=${item.messageId}">${item.messageTitle}</a>
                                 </td>
@@ -170,6 +170,7 @@
             }
             if (flag){//有删除的条目被选中需要删除
                 //提交表单
+                // document.getElementById("Form").action="deleteSelectedProductInfo";
                 document.getElementById("Form").submit();
             }
         }

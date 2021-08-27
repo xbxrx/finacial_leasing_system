@@ -53,6 +53,7 @@ public class MessageController {
 
     @RequestMapping("toDeleteMessage")
     public String deleteMessage(Model model,int messageId){
+        System.out.println("messageId="+messageId);
         messageInfoService.deleteMessageInfo(messageId);
         List<MessageInfo> messageInfos=messageInfoService.queryAllMessageInfo();
         model.addAttribute("messageInfos",messageInfos);
@@ -77,12 +78,8 @@ public class MessageController {
     }
     @RequestMapping("batchDeleteMessageInfo")
     public String batchDeleteMessageInfo(@RequestParam(name = "ids") int[] messageId,Model model){
-
         int count=messageInfoService.batchDeleteMessageInfo(messageId);
-        System.out.println(count);
-
         List<MessageInfo> messageInfos=messageInfoService.queryAllMessageInfo();
-
         model.addAttribute("messageInfos",messageInfos);
         model.addAttribute("Message","共删除"+count+"条信息");
         return "messageInfo";

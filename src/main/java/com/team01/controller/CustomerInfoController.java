@@ -93,7 +93,6 @@ public class CustomerInfoController {
     @RequestMapping("deleteSelectedCustomerInfo")
     public String deleteSelectedCustomerInfo(@RequestParam(name = "ids") int[] customerId, Model model) {
 
-        System.out.println("nihao 3#####################");
         int count = customerService.batchDeleteCustomerInfo(customerId);
         List<CustomerInfo> list = customerService.queryAllCustomerInfo();
         model.addAttribute("CustomerInfoList", list);

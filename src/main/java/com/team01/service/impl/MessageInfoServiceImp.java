@@ -53,5 +53,6 @@ public class MessageInfoServiceImp implements IMessageInfoService {
             count++;
         }
         return count;
+
     }
 }
