@@ -32,6 +32,10 @@ public interface IProductInfoDao {
 
     //public List<ProductInfo> queryProductInfoByCurrentPage(int currentPage);
 
+    public void deleteSelectProductInfo(String productId);
+
+    public ProductInfo queryByProductName(String productName);
+
 
 
 }
