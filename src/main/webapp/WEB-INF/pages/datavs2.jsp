@@ -67,11 +67,11 @@
                 data: [
 
 
-                    {value: 1048, name: '搜索引擎'},
-                    {value: 735, name: '直接访问'},
-                    {value: 580, name: '邮件营销'},
-                    {value: 484, name: '联盟广告'},
-                    {value: 300, name: '视频广告'}
+                    {value: 1048, name: '技术'},
+                    {value: 735, name: '政府'},
+                    {value: 580, name: '教育'},
+                    {value: 484, name: '工作'},
+                    {value: 300, name: '生活'}
                 ],
                 emphasis: {
                     itemStyle: {
