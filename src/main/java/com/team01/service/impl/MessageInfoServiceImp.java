@@ -43,15 +43,4 @@ public class MessageInfoServiceImp implements IMessageInfoService {
     public int updateMessageInfo(MessageInfo messageInfo) {
         return messageInfoDao.updateMessageInfo(messageInfo);
     }
-
-    @Override
-    public int batchDeleteMessageInfo(int[] messageId) {
-        int count=0;
-        for (int id:messageId)
-        {
-           messageInfoDao.deleteMessageInfo(id);
-            count++;
-        }
-        return count;
-    }
 }

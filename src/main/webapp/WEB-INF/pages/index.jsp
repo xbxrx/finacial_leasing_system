@@ -69,7 +69,7 @@
                             <a href="<%=basePath%>toMessageInfo" target="right">信息显示</a>
                         </dd>
                         <dd>
-                            <a href="CustomerManager" target="right">客户管理</a>
+                            <a href="CustomerManager?currentPage=1" target="right">客户管理</a>
                         </dd>
 
                     </dl>
@@ -155,7 +155,7 @@
     function logout(){
         var result = confirm("确定要退出吗？");
         if(result){
-            location.href="toLogout";
+            location.href="tologout";
         }
     }
 </script>

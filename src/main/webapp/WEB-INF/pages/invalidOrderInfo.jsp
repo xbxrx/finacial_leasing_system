@@ -26,25 +26,20 @@
 <body>
 <div class="admin-content-body">
     <div class="am-cf am-padding am-padding-bottom-0">
-        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">失效订单</strong><small></small>
-        </div>
+        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">失效订单</strong><small></small></div>
     </div>
 
     <hr>
+
     <div class="am-g">
         <div class="am-u-sm-12 am-u-md-3">
-            <div class="am-btn-toolbar">
-                <div class="am-btn-group am-btn-group-xs">
-                    <button class="am-btn am-btn-default" onclick="fun()" style="width: 86px" >批量删除</button>
-                </div>
-            </div>
 
         </div>
 
     </div>
     <div class="am-g">
         <div class="am-u-sm-12">
-            <form class="am-form" action="toDeleteSelectedOrderInfo" id="Form">
+            <form class="am-form">
                 <table class="am-table am-table-striped am-table-hover table-main">
                     <thead>
                     <tr>
@@ -65,7 +60,7 @@
                     <c:when test="${null != orderInfos}">
                         <c:forEach items="${orderInfos}" var="item">
                             <tr>
-                                <td><input type="checkbox" name="ids" value="${item.orderId}"></td>
+                                <td><input type="checkbox"></td>
                                 <td>${item.orderId}</td>
                                 <td>
                                     ${item.productId}
@@ -141,27 +136,6 @@
     function del() {
         if (!confirm("确认要删除？")) {
             window.event.returnValue = false;
-        }
-    }
-</script>
-
-<script language="javascript">
-    function fun() {
-        if (confirm("确认要删除选中条数？")) {
-            var flag=false;
-            var name = document.getElementsByName("ids");
-            for (var i = 0; i < name.length; i++) {
-                if(name[i].checked){
-                    //有一个条目选中了
-                    flag=true;
-                    break;
-                }
-            }
-            if (flag){//有删除的条目被选中需要删除
-                //提交表单
-
-                document.getElementById("Form").submit();
-            }
         }
     }
 </script>

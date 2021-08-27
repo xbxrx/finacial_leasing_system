@@ -19,7 +19,5 @@ public interface IOrderInfoService {
 
     public List<OrderInfo> queryByCurrentPage(Page page);
 
-    public int batchDeleteOrderInfo(int orderId[]);
-
 
 }
