@@ -34,7 +34,9 @@
             <div class="am-btn-toolbar">
                 <div class="am-btn-group am-btn-group-xs">
                     <button type="button" class="am-btn am-btn-default"><span class="am-icon-plus"></span>
-                        <a href="addCustomerInfo">客户添加</a> </button>
+                        <a href="addCustomerInfo">客户添加</a>
+                    </button>
+                    <button class="am-btn am-btn-default" onclick="fun()" style="width: 86px;margin-left: 10px" >批量删除</button>
                 </div>
             </div>
         </div>
@@ -55,7 +57,7 @@
     </div>
     <div class="am-g">
         <div class="am-u-sm-12">
-            <form class="am-form" action="" method="post" id="Form">
+            <form class="am-form" action="deleteSelectedCustomerInfo"  id="Form">
                 <table class="am-table am-table-striped am-table-hover table-main">
                     <thead>
 
@@ -75,7 +77,7 @@
 
                     <c:forEach items="${CustomerInfoList}" var="item">
                     <tr>
-                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox" name="ids" value="${item.customerId}"></td>
                         <td>${item.customerId}</td>
                         <td>${item.customerName}</td>
                         <td>${item.customerPhone}</td>
@@ -87,7 +89,7 @@
                                         <span class="am-icon-trash-o">
                                             <a href="deleteCustomerInfo?customerId=${item.customerId}">删除</a>
                                         </span>
-                            </button>
+                        </button>
                         </td>
                     </tr>
 
@@ -99,19 +101,13 @@
                     共 ${CustomerInfoList.size()} 条记录
                     <div class="am-fr">
                         <ul class="am-pagination">
-                            <li><a href="CustomerManager?currentPage=1">1</a></li>
-                            <li><a href="CustomerManager?currentPage=2">2</a></li>
-                            <li><a href="CustomerManager?currentPage=3">3</a></li>
-                            <li><a href="CustomerManager?currentPage=4">4</a></li>
-
-                            <div class="am-u-sm-12 am-u-md-3" style="display: flex; justify-content: flex-end">
-                                <div class="am-input-group am-input-group-sm">
-                                    <input type="text" class="am-form-field" name="currentPage" id="amLL"style="width: 60px">
-                                    <span class="am-input-group-btn">
-                                        <input type="button" onclick="toManager()" value="跳转" class="am-btn am-btn-default">
-                                    </span>
-                                </div>
-                            </div>
+                            <li class="am-disabled"><a href="#">«</a></li>
+                            <li class="am-active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">»</a></li>
                         </ul>
                     </div>
                 </div>
@@ -126,14 +122,36 @@
             window.event.returnValue = false;
         }
     }
-
-    function toManager(){
-        document.getElementById('Form').action="CustomerManager";
-        localStorage.setItem("amLL", document.querySelector("#amLL").value);
-        document.getElementById('Form').submit();
+</script>
+<script language="javascript">
+    function fun() {
+        if (confirm("确认要删除选中条数？")) {
+            var flag=false;
+            var name = document.getElementsByName("ids");
+            for (var i = 0; i < name.length; i++) {
+                if(name[i].checked){
+                    //有一个条目选中了
+                    flag=true;
+                    break;
+                }
+            }
+            if (flag){//有删除的条目被选中需要删除
+                //提交表单
+                // document.getElementById("Form").action="deleteSelectedProductInfo";
+                document.getElementById("Form").submit();
+            }
+        }
     }
 </script>
 
+<script>
+    var message="${Message}";
+    if(message!=null&&message!=''&&message!=undefined&&message!='null'){
+        alert(message);
+    }
+
+
+</script>
 
 </body>
 </html>

@@ -29,4 +29,9 @@ public interface IProductInfoService {
 
     // 升序排列
     public List<ProductInfo> queryAllProductInfoByAsc();
+    //批量删除
+    public int batchDelete(int productId[]);
+
+    public ProductInfo queryByProductName(String productName);
+
 }

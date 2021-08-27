@@ -40,7 +40,23 @@
 <div id="container" style="height:60%"></div>
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-
+<!-- Uncomment this line if you want to dataTool extension
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/extension/dataTool.min.js"></script>
+-->
+<!-- Uncomment this line if you want to use gl extension
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl@2/dist/echarts-gl.min.js"></script>
+-->
+<!-- Uncomment this line if you want to echarts-stat extension
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat@latest/dist/ecStat.min.js"></script>
+-->
+<!-- Uncomment this line if you want to use map
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/map/js/china.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/map/js/world.js"></script>
+-->
+<!-- Uncomment these two lines if you want to use bmap extension
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=<Your Key Here>"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/extension/bmap.min.js"></script>
+-->
 
 <script type="text/javascript">
     var dom = document.getElementById("container");
@@ -66,12 +82,11 @@
                 radius: '50%',
                 data: [
 
-
-                    {value: 1048, name: '技术'},
-                    {value: 735, name: '政府'},
-                    {value: 580, name: '教育'},
-                    {value: 484, name: '工作'},
-                    {value: 300, name: '生活'}
+                    {value: 1048, name: '搜索引擎'},
+                    {value: 735, name: '直接访问'},
+                    {value: 580, name: '邮件营销'},
+                    {value: 484, name: '联盟广告'},
+                    {value: 300, name: '视频广告'}
                 ],
                 emphasis: {
                     itemStyle: {
