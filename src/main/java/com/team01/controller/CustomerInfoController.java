@@ -1,7 +1,6 @@
 package com.team01.controller;
 
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import com.team01.domain.CustomerInfo;
 import com.team01.domain.Page;
 import com.team01.service.ICustomerService;
@@ -43,7 +42,6 @@ public class CustomerInfoController {
 
     @RequestMapping("resultAddCustomerInfo")
     public String resultAddCustomerInfo(String customerName,String customerPassword,String customerPhone,String customerMail,int consumeTotal,Model model){
-
         CustomerInfo customerInfo=new CustomerInfo();
         customerInfo.setCustomerName(customerName);
         customerInfo.setCustomerPassword(customerPassword);
@@ -78,25 +76,6 @@ public class CustomerInfoController {
             return "customerInfo";
         }
         return "error";
-        int i = customerService.deleteCustomerInfo(customerId);
-        List<CustomerInfo> list = customerService.queryAllCustomerInfo();
-        model.addAttribute("CustomerInfoList", list);
-        if (i > 0) {
-           model.addAttribute("Message","编号为"+customerId+"客户删除成功");
-        }
-        return "customerInfo";
-    }
-
-    @RequestMapping("deleteSelectedCustomerInfo")
-    public String deleteSelectedCustomerInfo(@RequestParam(name = "ids") int[] customerId, Model model) {
-
-        System.out.println("nihao 3#####################");
-        int count = customerService.batchDeleteCustomerInfo(customerId);
-        List<CustomerInfo> list = customerService.queryAllCustomerInfo();
-        model.addAttribute("CustomerInfoList", list);
-
-        model.addAttribute("Message","已成功删除"+count+"条客户信息!");
-        return "customerInfo";
     }
 
 }
