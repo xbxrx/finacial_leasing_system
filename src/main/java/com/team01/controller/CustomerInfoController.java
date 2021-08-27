@@ -2,6 +2,7 @@ package com.team01.controller;
 
 
 import com.team01.domain.CustomerInfo;
+import com.team01.domain.Page;
 import com.team01.service.ICustomerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,9 +18,9 @@ public class CustomerInfoController {
     ICustomerService customerService;
 
     @RequestMapping("CustomerManager")
-    public String CustomerManager(Model model){
-
-        List<CustomerInfo> list=customerService.queryAllCustomerInfo();
+    public String CustomerManager(Model model,int currentPage){
+        //List<CustomerInfo> list=customerService.queryAllCustomerInfo();
+        List<CustomerInfo> list=customerService.queryByCurrentPage(new Page(currentPage,7));
         model.addAttribute("CustomerInfoList",list);
         return "customerInfo";
 
@@ -51,8 +52,7 @@ public class CustomerInfoController {
 
         int i=customerService.addCustomerInfo(customerInfo);
         if(i>0){
-
-            List<CustomerInfo> list=customerService.queryAllCustomerInfo();
+            List<CustomerInfo> list=customerService.queryByCurrentPage(new Page(1,7));
             model.addAttribute("CustomerInfoList",list);
             return "customerInfo";
         }
@@ -61,7 +61,6 @@ public class CustomerInfoController {
 
     @RequestMapping("queryCustomerInfoByName")
     public String queryCustomerInfoByName(String customerName,Model model){
-
         List<CustomerInfo> list= customerService.queryCustomerInfoByName(customerName);
         model.addAttribute("CustomerInfoList",list);
         return "customerInfo";
@@ -73,7 +72,7 @@ public class CustomerInfoController {
         int i=customerService.deleteCustomerInfo(customerId);
         if(i>0)
         {
-            List<CustomerInfo> list=customerService.queryAllCustomerInfo();
+            List<CustomerInfo> list=customerService.queryByCurrentPage(new Page(1,7));
             model.addAttribute("CustomerInfoList",list);
             return "customerInfo";
         }

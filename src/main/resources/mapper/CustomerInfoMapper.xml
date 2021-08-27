@@ -34,6 +34,11 @@
             delete  from customer_list where customer_id=#{customerId}
     </delete>
 
+    <select id="queryByCurrentPage" resultMap="paperResultMap" parameterType="page">
+        select *
+        from customer_list limit #{page.pageIndex},#{page.pageSize}
+    </select>
+
 
 
 </mapper>

@@ -60,7 +60,7 @@
     </div>
     <div class="am-g">
         <div class="am-u-sm-12">
-            <form class="am-form">
+            <form class="am-form" id="Form" method="post" action="">
                 <table class="am-table am-table-striped am-table-hover table-main">
                     <thead>
                     <tr>
@@ -126,10 +126,8 @@
                     共 ${orderInfos.size()}条记录
                     <div class="am-fr">
                         <ul class="am-pagination">
-                            <li class="am-disabled">
-                                <a href="#">«</a>
-                            </li>
-                            <li class="am-active" onclick="amChange">
+
+                            <li class>
                                 <a href="toOrderInfo?currentPage=1">1</a>
                             </li>
                             <li>
@@ -139,24 +137,27 @@
                                 <a href="toOrderInfo?currentPage=3">3</a>
                             </li>
                             <li>
-                                <a href="toOrderInfo?currentPage=4">»</a>
+                                <a href="toOrderInfo?currentPage=4">4</a>
                             </li>
-                            <script>
-                                function amChange() {
-                                    alert("1");
-                                }
-                            </script>
-<%--                            <li>--%>
-<%--                                <a href="#">5</a>--%>
-<%--                            </li>--%>
-<%--                            <li>--%>
-<%--                                <a href="#">»</a>--%>
-<%--                            </li>--%>
+
+
+
+                            <div class="am-u-sm-12 am-u-md-3" style="display: flex; justify-content: flex-end">
+                                <div class="am-input-group am-input-group-sm">
+                                    <input type="text" class="am-form-field" name="currentPage" id="amLL"style="width: 60px">
+                                    <span class="am-input-group-btn">
+                                        <input type="button" onclick="toOrder()" value="跳转" class="am-btn am-btn-default">
+                                    </span>
+                                </div>
+                            </div>
                         </ul>
+
                     </div>
                 </div>
                 <hr>
             </form>
+
+
         </div>
     </div>
 </div>
@@ -166,6 +167,11 @@
         if (!confirm("确认要删除？")) {
             window.event.returnValue = false;
         }
+    }
+    function toOrder(){
+        document.getElementById('Form').action="toOrderInfo";
+        localStorage.setItem("amLL", document.querySelector("#amLL").value);
+        document.getElementById('Form').submit();
     }
 </script>
 </body>
