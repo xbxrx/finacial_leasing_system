@@ -1,6 +1,7 @@
 package com.team01.controller;
 
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import com.team01.domain.CustomerInfo;
 import com.team01.domain.Page;
 import com.team01.service.ICustomerService;
@@ -49,33 +50,53 @@ public class CustomerInfoController {
         customerInfo.setCustomerMail(customerMail);
         customerInfo.setConsumeTotal(consumeTotal);
 
-        int i=customerService.addCustomerInfo(customerInfo);
-        if(i>0){
-            List<CustomerInfo> list=customerService.queryByCurrentPage(new Page(1,7));
-            model.addAttribute("CustomerInfoList",list);
-            return "customerInfo";
+
+        List<CustomerInfo> list = customerService.queryAllCustomerInfo();
+        model.addAttribute("CustomerInfoList", list);
+        CustomerInfo customerInfoCheck=customerService.queryCustomerInfoByCheckName(customerName);
+        if(customerInfoCheck==null) {
+            int i = customerService.addCustomerInfo(customerInfo);
+
+            if (i > 0) {
+                model.addAttribute("Message", "客户" + customerName + "信息添加成功");
+            } else {
+                model.addAttribute("Message", "客户" + customerName + "信息添加失败");
+            }
+        }else
+        {
+            model.addAttribute("Message","客户"+customerName+"信息存在");
         }
-        return "error";
+        return "customerInfo";
     }
 
     @RequestMapping("queryCustomerInfoByName")
-    public String queryCustomerInfoByName(String customerName,Model model){
-        List<CustomerInfo> list= customerService.queryCustomerInfoByName(customerName);
-        model.addAttribute("CustomerInfoList",list);
+    public String queryCustomerInfoByName(String customerName, Model model) {
+
+        List<CustomerInfo> list = customerService.queryCustomerInfoByName(customerName);
+        model.addAttribute("CustomerInfoList", list);
         return "customerInfo";
     }
 
     @RequestMapping("deleteCustomerInfo")
-    public String deleteCustomerInfo(int customerId,Model model){
+    public String deleteCustomerInfo(int customerId,String customerName, Model model) {
 
-        int i=customerService.deleteCustomerInfo(customerId);
-        if(i>0)
-        {
-            List<CustomerInfo> list=customerService.queryByCurrentPage(new Page(1,7));
-            model.addAttribute("CustomerInfoList",list);
-            return "customerInfo";
+        int i = customerService.deleteCustomerInfo(customerId);
+        List<CustomerInfo> list = customerService.queryAllCustomerInfo();
+        model.addAttribute("CustomerInfoList", list);
+        if (i > 0) {
+           model.addAttribute("Message","编号为"+customerId+"客户删除成功");
         }
-        return "error";
+        return "customerInfo";
     }
 
+    @RequestMapping("deleteSelectedCustomerInfo")
+    public String deleteSelectedCustomerInfo(@RequestParam(name = "ids") int[] customerId, Model model) {
+
+        int count = customerService.batchDeleteCustomerInfo(customerId);
+        List<CustomerInfo> list = customerService.queryAllCustomerInfo();
+        model.addAttribute("CustomerInfoList", list);
+
+        model.addAttribute("Message","已成功删除"+count+"条客户信息!");
+        return "customerInfo";
+    }
 }
