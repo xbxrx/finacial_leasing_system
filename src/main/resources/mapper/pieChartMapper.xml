@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team01.dao.IStatisticDao">
+
+    <resultMap id="paperResultMap" type="com.team01.domain.typeAndTotalPrice">
+        <result property="productType" column="product_type"></result>
+        <result property="rentTotal" column="SUM(rent_total)"></result>
+    </resultMap>
+
+
+    <select id="selectTypeAndTotalPrice" resultMap="paperResultMap">
+        select  product_type,SUM(rent_total)
+        FROM order_list a,product_list b
+        WHERE a.product_name=b.product_name GROUP BY b.product_type
+    </select>
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>
