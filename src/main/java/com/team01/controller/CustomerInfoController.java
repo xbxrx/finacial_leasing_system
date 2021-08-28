@@ -1,7 +1,6 @@
 package com.team01.controller;
 
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import com.team01.domain.CustomerInfo;
 import com.team01.domain.Page;
 import com.team01.service.ICustomerService;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import java.util.List;
+
 
 @Controller
 
@@ -25,7 +25,6 @@ public class CustomerInfoController {
         List<CustomerInfo> list=customerService.queryByCurrentPage(new Page(currentPage,7));
         model.addAttribute("CustomerInfoList",list);
         return "customerInfo";
-
     }
 
     @RequestMapping("updateCustomerInfo")
@@ -73,6 +72,10 @@ public class CustomerInfoController {
     @RequestMapping("queryCustomerInfoByName")
     public String queryCustomerInfoByName(String customerName, Model model) {
 
+
+        if("".equals(customerName)){
+            model.addAttribute("Message","请输入关键字！");
+        }
         List<CustomerInfo> list = customerService.queryCustomerInfoByName(customerName);
         model.addAttribute("CustomerInfoList", list);
         return "customerInfo";

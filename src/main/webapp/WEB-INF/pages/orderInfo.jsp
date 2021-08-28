@@ -173,6 +173,10 @@
         localStorage.setItem("amLL", document.querySelector("#amLL").value);
         document.getElementById('Form').submit();
     }
+    var message="${Message}";
+    if(message!=null&&message!=''&&message!=undefined&&message!='null'){
+        alert(message);
+    }
 </script>
 </body>
 </html>

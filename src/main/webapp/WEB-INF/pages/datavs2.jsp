@@ -26,18 +26,13 @@
     </div>
 </div>
 <hr>
-<div class="am-u-sm-12 am-u-md-3">
-    <div class="am-input-group am-input-group-sm">
-        <input type="text" class="am-form-field" placeholder="请输入时间">
-        <span class="am-input-group-btn">
-        <button class="am-btn am-btn-default" type="button">搜索</button>
-      </span>
-    </div>
+
+<hr>
+<hr>
+<hr>
+<div id="container" style="height:60%">
+
 </div>
-<hr>
-<hr>
-<hr>
-<div id="container" style="height:60%"></div>
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
 
@@ -67,11 +62,11 @@
                 data: [
 
 
-                    {value: 1048, name: '技术'},
-                    {value: 735, name: '政府'},
-                    {value: 580, name: '教育'},
-                    {value: 484, name: '工作'},
-                    {value: 300, name: '生活'}
+                    {value: 335090, name: '技术'},
+                    {value: 58980, name: '教育'},
+                    {value: 175470, name: '生活'},
+                    {value: 95740, name: '工作'},
+                    {value: 41330, name: '政府'}
                 ],
                 emphasis: {
                     itemStyle: {

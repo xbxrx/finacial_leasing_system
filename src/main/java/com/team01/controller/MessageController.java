@@ -52,6 +52,9 @@ public class MessageController {
 
     @RequestMapping("toQueryMessage")
     public String queryByTitle(String messageTitle,Model model){
+        if("".equals(messageTitle)){
+            model.addAttribute("Message","请输入关键字！");
+        }
         List<MessageInfo> messageInfos= messageInfoService.queryByMessageTitle(messageTitle);
         model.addAttribute("messageInfos",messageInfos);
         return "messageInfo";

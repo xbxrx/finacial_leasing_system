@@ -33,6 +33,10 @@ public class OrderController {
 
     @RequestMapping("toQueryOrder")
     public String toQueryOrder(Model model,String productName){
+
+        if("".equals(productName)){
+            model.addAttribute("Message","请输入关键字！");
+        }
         List<OrderInfo> orderInfos=orderInfoService.queryByOrderName(productName);
         model.addAttribute("orderInfos",orderInfos);
         return "orderInfo";

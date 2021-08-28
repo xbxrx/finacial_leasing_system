@@ -103,7 +103,7 @@
                             <a href="datavs4" target="right">用户消费统计</a>
                         </dd>
                         <dd>
-                            <a href="datavs2" target="right">产品类型统计</a>
+                            <a href="pieChart" target="right">产品类型统计</a>
                         </dd>
 
 

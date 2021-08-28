@@ -31,14 +31,14 @@
 <div class="am-g" >
 </div>
 <hr>
-<div class="am-u-sm-12 am-u-md-3">
-    <div class="am-input-group am-input-group-sm">
-        <input type="text" class="am-form-field" placeholder="请输入时间">
-        <span class="am-input-group-btn">
-        <button class="am-btn am-btn-default" type="submit">搜索</button>
-      </span>
-    </div>
-</div>
+<%--<div class="am-u-sm-12 am-u-md-3">--%>
+<%--    <div class="am-input-group am-input-group-sm">--%>
+<%--        <input type="text" class="am-form-field" placeholder="请输入时间">--%>
+<%--        <span class="am-input-group-btn">--%>
+<%--        <button class="am-btn am-btn-default" type="submit">搜索</button>--%>
+<%--      </span>--%>
+<%--    </div>--%>
+<%--</div>--%>
 <hr>
 
 <div id="container" style="height: 48%"></div>
@@ -72,6 +72,9 @@
 
 
 
+
+    <%--<c:when test="${null != statistics}">--%>
+    <%--    <c:forEach items="${statistics}" var="item">--%>
     option = {
         tooltip: {
             trigger: 'axis',
@@ -80,7 +83,7 @@
             }
         },
         legend: {
-            data: ['产品名001', '产品名002','产品名003','产品名004']
+            data: ['美颜服务系统', '网上考证','政府投诉','政府招标']
         },
         grid: {
             left: '3%',
@@ -98,24 +101,24 @@
         },
         series: [
             {
-                name: '产品名001',
+                name: '美颜服务系统',
                 type: 'bar',
-                data: [50000]
+                data: [73080]
             },
             {
-                name: '产品名002',
+                name: '网上考证',
                 type: 'bar',
-                data: [19325]
+                data: [69160]
             },
             {
-                name: '产品名003',
+                name: '政府投诉',
                 type: 'bar',
-                data: [36564]
+                data: [63400]
             },
             {
-                name: '产品名004',
+                name: '政府招标',
                 type: 'bar',
-                data: [85241]
+                data: [63080]
             }
         ]
     };
@@ -123,6 +126,7 @@
     if (option && typeof option === 'object') {
         myChart.setOption(option);
     }
+
 
 </script>
 </body>
