@@ -69,8 +69,8 @@
                     </div>
 
                     <div class="am-form-group">
-                        <label  class="am-u-sm-3 am-form-label">
-                            客户消费</label>
+<%--                        <label  class="am-u-sm-3 am-form-label">--%>
+<%--                            客户消费</label>--%>
                         <div class="am-u-sm-9">
                             <input type="hidden" name="consumeTotal" required placeholder="消费总额" value="0">
                         </div>
