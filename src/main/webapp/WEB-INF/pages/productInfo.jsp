@@ -88,7 +88,7 @@
                         <th class="table-title">产品名称</th>
                         <th class="table-type">产品状态</th>
                         <th class="table-author am-hide-sm-only">产品类型</th>
-                        <th class="table-date am-hide-sm-only" id="moneydate">产品价格
+                        <th class="table-date am-hide-sm-only" id="moneydate">产品价格/月
                           <a href="queryAllProductInfoByDesc" > <div  id="moneydateAA"> </div></a>
                             <a href="queryAllProductInfoByAsc" > <div  id="moneydateBB"> </div></a>
                         </th>

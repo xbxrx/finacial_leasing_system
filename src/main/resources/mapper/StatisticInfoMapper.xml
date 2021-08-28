@@ -4,10 +4,19 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.team01.dao.IStatisticDao">
 
+    <resultMap id="ResultMap" type="com.team01.domain.Statistic">
+        <result property="productName" column="product_name"/>
+        <result property="rentTotal" column="SUM(rent_total)"/>
+    </resultMap>
+
     <resultMap id="paperResultMap" type="com.team01.domain.typeAndTotalPrice">
         <result property="productType" column="product_type"></result>
         <result property="rentTotal" column="SUM(rent_total)"></result>
     </resultMap>
+
+    <select id="statisticByRentTotal" resultMap="ResultMap">
+        SELECT product_name,SUM(rent_total) FROM order_list group by product_name ORDER BY SUM(rent_total) DESC
+    </select>
 
 
     <select id="selectTypeAndTotalPrice" resultMap="paperResultMap">
@@ -17,14 +26,4 @@
     </select>
 
 
-
-
-
-
-
-
-
-
-
-
-</mapper>
+    </mapper>

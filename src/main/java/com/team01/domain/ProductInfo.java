@@ -77,7 +77,7 @@ public class ProductInfo {
         this.productType = productType;
     }
 
-    public double getProductPrice() {
+    public int getProductPrice() {
         return productPrice;
     }
 

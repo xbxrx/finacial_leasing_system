@@ -1,21 +1,31 @@
 package com.team01.controller;
 
+import com.team01.Utils.DateFormatUtils;
+import com.team01.domain.CustomerInfo;
 import com.team01.domain.OrderInfo;
 import com.team01.domain.Page;
+import com.team01.domain.ProductInfo;
+import com.team01.service.ICustomerService;
 import com.team01.service.IOrderInfoService;
+import com.team01.service.IProductInfoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import javax.annotation.Resource;
 import java.util.List;
 
 @Controller
 public class OrderController {
 
+    @Resource(name = "productInfoService")
+    IProductInfoService productInfoService;
+
     @Resource(name = "orderInfoService")
     private IOrderInfoService orderInfoService;
+
+    @Resource(name="customerService")
+    ICustomerService customerService;
 
     @RequestMapping("toOrderInfo")
     public String toOrderInfo(Model model,int currentPage){
@@ -54,26 +64,39 @@ public class OrderController {
     }
 
     @RequestMapping("toAddOrder")
-    public String doAddOrder(){
+    public String doAddOrder(Model model){
+        List<ProductInfo> productInfos= productInfoService.queryAllProductInfo();
+        System.out.println(productInfos);
+        model.addAttribute("ProductInfos",productInfos);
         return "addOrder";
     }
 
     @RequestMapping("toAddResult")
-    public String addOrder(int productId,int customerId,String productName,String customerName,String startTime,
-    String endTime,int rentTotal,Model model){
-        OrderInfo orderInfo=new OrderInfo(productId,customerId,productName,customerName,startTime,endTime,rentTotal);
-        int i= orderInfoService.addOrderInfo(orderInfo);
+    public String addOrder(String customerName,String productName,String startTime, String endTime,Model model){
+        CustomerInfo customerInfo=customerService.queryCustomerInfoByCheckName(customerName);
+        if (customerInfo==null) {
+            model.addAttribute("Message", "不存在该用户！");
+        }
+        ProductInfo productInfo=productInfoService.queryByProductName(productName);
+        try {
+            int month= DateFormatUtils.getMonthSpace(startTime,endTime);
+            int rentTotal=month*(productInfo.getProductPrice());
+            OrderInfo orderInfo=new OrderInfo(productInfo.getProductId(),customerInfo.getCustomerId(),productName,customerName
+                    ,startTime,endTime,rentTotal);
+            int i=orderInfoService.addOrderInfo(orderInfo);
+            if(i>0)
+                model.addAttribute ("Message","一条订单添加成功！");
+            int consumeTotal=orderInfoService.getConsumeTotal(customerInfo.getCustomerId());
+            customerService.updateConsumeTotal(consumeTotal,customerInfo.getCustomerId());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        if(i>0){
-            model.addAttribute("Message","编号为"+orderInfo.getOrderId()+"，"+"客户为"+customerName+"订单添加成功");
-        }
-        else{
-            model.addAttribute("Message","添加失败!");
-        }
         List<OrderInfo> orderInfos=orderInfoService.queryByCurrentPage(new Page(1,7));
         model.addAttribute("orderInfos",orderInfos);
         return "orderInfo";
     }
+
     @RequestMapping("deleteSelectedInvalidOrderInfo")
     public String deleteSelectedInvalidOrderInfo(@RequestParam(name = "ids") int [] orderId, Model model){
         int count=orderInfoService.batchDeleteOrderInfo(orderId);
@@ -83,6 +106,8 @@ public class OrderController {
         model.addAttribute("orderInfos",orderInfos);
         return "invalidOrderInfo";
     }
+
+
 
 
 

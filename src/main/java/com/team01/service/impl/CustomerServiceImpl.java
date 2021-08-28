@@ -4,6 +4,7 @@ import com.team01.dao.ICustomerInfoDao;
 import com.team01.domain.CustomerInfo;
 import com.team01.domain.Page;
 import com.team01.service.ICustomerService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -59,5 +60,10 @@ public class CustomerServiceImpl implements ICustomerService {
             count++;
         }
         return count;
+    }
+
+    @Override
+    public int updateConsumeTotal(int consumeTotal, int customerId) {
+        return iCustomerInfoDao.updateConsumeTotal(consumeTotal,customerId);
     }
 }

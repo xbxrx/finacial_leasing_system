@@ -21,5 +21,9 @@ public interface IOrderInfoService {
 
     public int batchDeleteOrderInfo(int orderId[]);
 
+    public int getTotalMonth();
+
+    public int getConsumeTotal(int customerId);
+
 
 }

@@ -55,5 +55,15 @@ public class OrderInfoServiceImp implements IOrderInfoService {
         return count;
     }
 
+    @Override
+    public int getTotalMonth() {
+        return iOrderInfoDao.getTotalMonth();
+    }
+
+    @Override
+    public int getConsumeTotal(int customerId) {
+        return iOrderInfoDao.getConsumeTotal(customerId);
+    }
+
 
 }

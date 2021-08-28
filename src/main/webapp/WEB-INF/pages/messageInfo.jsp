@@ -26,7 +26,7 @@
 <body>
 <div class="admin-content-body">
     <div class="am-cf am-padding am-padding-bottom-0">
-        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">产品信息管理</strong><small></small></div>
+        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">新闻信息管理</strong><small></small></div>
     </div>
 
     <hr>
@@ -40,10 +40,11 @@
                             <a href="<%=basePath%>toAddMessage">新增</a>
                         </span>
                     </button>
-                    <button class="am-btn am-btn-default" onclick="fun()" style="width: 86px;margin-left: 10px"  >批量删除</button>
+                    <button class="am-btn am-btn-default" onclick="fun()" style="width: 86px;margin-left: 10px">批量删除</button>
                 </div>
             </div>
         </div>
+
         <div class="am-u-sm-12 am-u-md-3">
 
         </div>
@@ -82,10 +83,7 @@
                                     <a href="toQueryByMessageId?messageId=${item.messageId}">${item.messageTitle}</a>
                                 </td>
                                 <td>${item.authorName}</td>
-                                <td>
-                                    ${item.publishTime}
-                                </td>
-
+                                <td>${item.publishTime}</td>
                                 <td>
                                     <div class="am-btn-toolbar">
                                         <div class="am-btn-group am-btn-group-xs">

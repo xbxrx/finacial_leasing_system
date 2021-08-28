@@ -11,10 +11,8 @@ public class MessageInfo {
     }
 
     public MessageInfo(String messageTitle, String authorName,String productContent) {
-        //this.messageId = messageId;
         this.messageTitle = messageTitle;
         this.authorName = authorName;
-        //this.publishTime = publishTime;
         this.productContent = productContent;
     }
 

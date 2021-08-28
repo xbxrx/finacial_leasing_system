@@ -45,9 +45,17 @@
         select *from order_list limit #{page.pageIndex},#{page.pageSize}
     </select>
 
+    <select id="getTotalMonth" resultType="int">
+        SELECT TIMESTAMPDIFF(MONTH,DATE_FORMAT(start_time,'%Y-%m-%d') ,DATE_FORMAT(end_time,'%Y-%m-%d'))
+        FROM order_list
 
+    </select>
 
-
+    <select id="getConsumeTotal" resultType="int">
+        select SUM(rent_total)
+        from order_list
+        where customer_id=#{customerId}
+    </select>
 
 
 

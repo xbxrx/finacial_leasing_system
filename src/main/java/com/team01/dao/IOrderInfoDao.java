@@ -22,5 +22,9 @@ public interface IOrderInfoDao {
 
     public List<OrderInfo> queryByCurrentPage(@Param("page")Page page);
 
+    public int getTotalMonth();
+
+    public int getConsumeTotal(int customerId);
+
 
 }

@@ -21,7 +21,6 @@ public class CustomerInfoController {
 
     @RequestMapping("CustomerManager")
     public String CustomerManager(Model model,int currentPage){
-        //List<CustomerInfo> list=customerService.queryAllCustomerInfo();
         List<CustomerInfo> list=customerService.queryByCurrentPage(new Page(currentPage,7));
         model.addAttribute("CustomerInfoList",list);
         return "customerInfo";
@@ -49,9 +48,6 @@ public class CustomerInfoController {
         customerInfo.setCustomerPhone(customerPhone);
         customerInfo.setCustomerMail(customerMail);
         customerInfo.setConsumeTotal(consumeTotal);
-
-
-
         CustomerInfo customerInfoCheck=customerService.queryCustomerInfoByCheckName(customerName);
         if(customerInfoCheck==null) {
             int i = customerService.addCustomerInfo(customerInfo);
@@ -84,7 +80,6 @@ public class CustomerInfoController {
     @RequestMapping("deleteCustomerInfo")
     public String deleteCustomerInfo(int customerId, Model model) {
         int i = customerService.deleteCustomerInfo(customerId);
-
         if (i > 0) {
            model.addAttribute("Message","编号为"+customerId+"客户删除成功");
         }
@@ -95,9 +90,7 @@ public class CustomerInfoController {
 
     @RequestMapping("deleteSelectedCustomerInfo")
     public String deleteSelectedCustomerInfo(@RequestParam(name = "ids") int[] customerId, Model model) {
-
         int count = customerService.batchDeleteCustomerInfo(customerId);
-        //List<CustomerInfo> list = customerService.queryAllCustomerInfo();
         List<CustomerInfo> list=customerService.queryByCurrentPage(new Page(1,7));
         model.addAttribute("CustomerInfoList", list);
         model.addAttribute("Message","已成功删除"+count+"条客户信息!");

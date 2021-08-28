@@ -56,14 +56,6 @@
                             </div>
                         </div>
 
-<%--                    <div class="am-form-group">--%>
-<%--                        <label class="am-u-sm-3 am-form-label">--%>
-<%--                            发布时间 </label>--%>
-<%--                        <div class="am-u-sm-9">--%>
-<%--                            <input type="datetime-local" id="doc-vld-ctn-3" required placeholder="请输入发布时间"--%>
-<%--                                   name="publishTime" data-equal-to="#doc-vld-ctn-3"  required> <small>输入发布时间</small>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
 
                         <div class="am-form-group">
                             <label class="am-u-sm-3 am-form-label">
@@ -73,18 +65,13 @@
                                           data-equal-to="#doc-vld-ctn-3"
                                 rows="16"></textarea>
                                 <small>输入主体内容</small>
-<%--                                <input type="text"  required placeholder="请输入主体内容"--%>
-<%--                                       name="productContent"  data-equal-to="#doc-vld-ctn-3"  required> <small>输入主体内容</small>--%>
                             </div>
                         </div>
 
 
-
-
-
                         <div class="am-form-group" >
                             <div class="am-u-sm-9 am-u-sm-push-3">
-                                <input type="submit" class="am-btn am-btn-success" value="上传" />
+                                <input type="submit" class="am-btn am-btn-success" value="保存" />
                                 <a href="<%=basePath%>toMessageInfo">
                                     <input type="button" class="am-btn am-btn-success"  value="返回" />
                                 </a>

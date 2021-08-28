@@ -28,6 +28,8 @@ public interface ICustomerInfoDao {
 
     public CustomerInfo queryCustomerInfoByCheckName(String customerName);
 
+    public int updateConsumeTotal(@Param("consumeTotal")int consumeTotal,@Param("customerId")int customerId);
+
 
 
 

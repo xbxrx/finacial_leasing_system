@@ -72,7 +72,7 @@
                         <th>用户名</th>
                         <th class="am-hide-sm-only">开始时间</th>
                         <th class="am-hide-sm-only">结束日期</th>
-                        <th class="am-hide-sm-only">订单总金额</th>
+                        <th class="am-hide-sm-only">消费金额</th>
                         <th class="table-set">操作</th>
                     </tr>
                     </thead>

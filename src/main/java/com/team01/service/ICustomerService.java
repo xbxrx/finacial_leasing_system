@@ -28,4 +28,6 @@ public interface ICustomerService {
     public CustomerInfo queryCustomerInfoByCheckName(String customerName);
 
     public int batchDeleteCustomerInfo(int[] customerId);
+
+    public int updateConsumeTotal(int consumeTotal,int customerId);
 }

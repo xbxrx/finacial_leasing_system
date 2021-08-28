@@ -14,6 +14,8 @@
         <result property="consumeTotal" column="consume_total"/>
     </resultMap>
 
+
+
 <select id="queryCustomerInfoByName" parameterType="String" resultMap="paperResultMap">
     select *
     from customer_list
@@ -44,6 +46,10 @@
         from customer_list
         where customer_name =#{customerName}
     </select>
+
+    <update id="updateConsumeTotal">
+        update customer_list set consume_total=#{consumeTotal} where customer_id=#{customerId}
+    </update>
 
 
 

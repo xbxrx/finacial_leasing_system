@@ -31,36 +31,20 @@
 <div class="am-g" >
 </div>
 <hr>
-<%--<div class="am-u-sm-12 am-u-md-3">--%>
-<%--    <div class="am-input-group am-input-group-sm">--%>
-<%--        <input type="text" class="am-form-field" placeholder="请输入时间">--%>
-<%--        <span class="am-input-group-btn">--%>
-<%--        <button class="am-btn am-btn-default" type="submit">搜索</button>--%>
-<%--      </span>--%>
-<%--    </div>--%>
-<%--</div>--%>
+<div class="am-u-sm-12 am-u-md-3">
+    <div class="am-input-group am-input-group-sm">
+        <input type="text" class="am-form-field" placeholder="请输入时间">
+        <span class="am-input-group-btn">
+        <button class="am-btn am-btn-default" type="submit">搜索</button>
+      </span>
+    </div>
+</div>
 <hr>
 
 <div id="container" style="height: 48%"></div>
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-<!-- Uncomment this line if you want to dataTool extension
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/extension/dataTool.min.js"></script>
--->
-<!-- Uncomment this line if you want to use gl extension
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl@2/dist/echarts-gl.min.js"></script>
--->
-<!-- Uncomment this line if you want to echarts-stat extension
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat@latest/dist/ecStat.min.js"></script>
--->
-<!-- Uncomment this line if you want to use map
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/map/js/china.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/map/js/world.js"></script>
--->
-<!-- Uncomment these two lines if you want to use bmap extension
-<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=<Your Key Here>"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/extension/bmap.min.js"></script>
--->
+
 
 <script type="text/javascript">
     var dom = document.getElementById("container");
@@ -73,8 +57,8 @@
 
 
 
-    <%--<c:when test="${null != statistics}">--%>
-    <%--    <c:forEach items="${statistics}" var="item">--%>
+<%--<c:when test="${null != statistics}">--%>
+<%--    <c:forEach items="${statistics}" var="item">--%>
     option = {
         tooltip: {
             trigger: 'axis',

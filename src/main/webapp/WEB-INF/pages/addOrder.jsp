@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
     String path = request.getContextPath();
@@ -36,33 +37,49 @@
     <div class="admin-content">
         <div class="admin-content-body">
             <div class="am-g">
+
                 <form action="toAddResult" class="am-form am-form-horizontal" method="post"
                       style="padding-top:30px;" data-am-validator>
-                    <div class="am-form-group">
-                        <label class="am-u-sm-3 am-form-label">
-                            产品编号 </label>
-                        <div class="am-u-sm-9">
-                            <input type="text" id="doc-vld-ctn-1" required placeholder="请输入产品编号"
-                                   name="productId"> <small>输入产品编号</small>
-                        </div>
-                    </div>
-                    <div class="am-form-group">
-                        <label class="am-u-sm-3 am-form-label">
-                            用户编号 </label>
-                        <div class="am-u-sm-9">
-                            <input type="text" id="doc-vld-ctn-2" required placeholder="请输入用户编号"
-                                   name="customerId"  data-equal-to="#doc-vld-ctn-2"  required> <small>输入用户编号</small>
-                        </div>
-                    </div>
+
+<%--                    <div class="am-form-group">--%>
+<%--                        <label class="am-u-sm-3 am-form-label">--%>
+<%--                            产品编号 </label>--%>
+<%--                        <div class="am-u-sm-9">--%>
+<%--                            <input type="text" id="doc-vld-ctn-1" required placeholder="请输入产品编号"--%>
+<%--                                   name="productId" > <small>输入产品编号</small>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+
+<%--                    <div class="am-form-group">--%>
+<%--                        <label class="am-u-sm-3 am-form-label">--%>
+<%--                            用户编号 </label>--%>
+<%--                        <div class="am-u-sm-9">--%>
+<%--                            <input type="text" id="doc-vld-ctn-2" required placeholder="请输入用户编号"--%>
+<%--                                   name="customerId"  data-equal-to="#doc-vld-ctn-2"  required> <small>输入用户编号</small>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
 
                     <div class="am-form-group">
-                        <label class="am-u-sm-3 am-form-label">
-                            产品名称 </label>
+                        <label  class="am-u-sm-3 am-form-label">
+                            产品名称</label>
                         <div class="am-u-sm-9">
-                            <input type="text" id="doc-vld-ctn-3" required placeholder="请输入产品名称"
-                                   name="productName"  data-equal-to="#doc-vld-ctn-3"  required> <small>输入产品名称</small>
+                            <select  id="productStatus" name="productName">
+                                <c:forEach items="${ProductInfos}" var="item">
+                                    <option>${item.productName}</option>
+                                </c:forEach>
+                            </select>
                         </div>
+
                     </div>
+
+<%--                    <div class="am-form-group">--%>
+<%--                        <label class="am-u-sm-3 am-form-label">--%>
+<%--                            产品名称 </label>--%>
+<%--                        <div class="am-u-sm-9">--%>
+<%--                            <input type="text" id="doc-vld-ctn-3" required placeholder="请输入产品名称"--%>
+<%--                                   name="productName"  data-equal-to="#doc-vld-ctn-3"  required> <small>输入产品名称</small>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
 
                     <div class="am-form-group">
                         <label class="am-u-sm-3 am-form-label">
@@ -91,20 +108,20 @@
                         </div>
                     </div>
 
-                    <div class="am-form-group">
-                        <label class="am-u-sm-3 am-form-label">
-                            订单总金额 </label>
-                        <div class="am-u-sm-9">
-                            <input type="text " id="doc-vld-ctn-6" required placeholder="请输入租金金额"
-                                   name="rentTotal"  data-equal-to="#doc-vld-ctn-6"  required><br> <small>输入订单总金额</small>
-                        </div>
-                    </div>
+<%--                    <div class="am-form-group">--%>
+<%--                        <label class="am-u-sm-3 am-form-label">--%>
+<%--                            订单总金额 </label>--%>
+<%--                        <div class="am-u-sm-9">--%>
+<%--                            <input type="text " id="doc-vld-ctn-6" required placeholder="请输入租金金额"--%>
+<%--                                   name="rentTotal"  data-equal-to="#doc-vld-ctn-6"  required><br> <small>输入订单总金额</small>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
 
 
 
                     <div class="am-form-group" >
                         <div class="am-u-sm-9 am-u-sm-push-3">
-                            <input type="submit" class="am-btn am-btn-success" value="上传" />
+                            <input type="submit" class="am-btn am-btn-success" value="保存" />
                             <a href="<%=basePath%>toOrderInfo?currentPage=1">
                                 <input type="button" class="am-btn am-btn-success"  value="返回" />
                             </a>
@@ -120,6 +137,12 @@
         src="assets/js/libs/jquery-1.10.2.min.js">
 </script>
 <script type="text/javascript" src="<%=basePath%>myplugs/js/plugs.js">
+</script>
+<script>
+    var message="${Message}";
+    if(message!=null&&message!=''&&message!=undefined&&message!='null'){
+        alert(message);
+    }
 </script>
 </body>
 </html>

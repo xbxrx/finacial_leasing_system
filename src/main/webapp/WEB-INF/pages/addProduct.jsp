@@ -43,6 +43,7 @@
                                    name="productName">
                         </div>
                     </div>
+
                     <div class="am-form-group">
                         <label  class="am-u-sm-3 am-form-label">
                             产品状态</label>
@@ -55,7 +56,6 @@
                     </div>
 
 
-
                     <div class="am-form-group">
                         <label  class="am-u-sm-3 am-form-label">
                             产品类型</label>
@@ -64,7 +64,6 @@
                                    name="productType"  data-equal-to="#doc-vld-pwd-1" >
                         </div>
                     </div>
-
 
 
                     <div class="am-form-group">
@@ -82,7 +81,7 @@
                         <div class="am-u-sm-9">
                                 <textarea name="introduceContent"  placeholder="请输入产品介绍"
                                           data-equal-to="#doc-vld-ctn-3"
-                                          rows="16"></textarea>
+                                          rows="14"></textarea>
                             <small>输入产品介绍</small>
                         </div>
                     </div>
@@ -93,7 +92,7 @@
 
                     <div class="am-form-group">
                         <div class="am-u-sm-9 am-u-sm-push-3">
-                            <input type="submit" class="am-btn am-btn-success" value="添加"  />
+                            <input type="submit" class="am-btn am-btn-success" value="保存"  />
 
                             <a href="productManager">
                                 <input type="button" class="am-btn am-btn-success"  value="返回" />
