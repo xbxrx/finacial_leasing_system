@@ -6,14 +6,26 @@ public class MessageInfo {
     private String authorName;
     private String publishTime;
     private String productContent;
+    private String img;
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+
     public MessageInfo(){
 
     }
 
-    public MessageInfo(String messageTitle, String authorName,String productContent) {
+    public MessageInfo(String messageTitle, String authorName,String productContent,String img) {
         this.messageTitle = messageTitle;
         this.authorName = authorName;
         this.productContent = productContent;
+        this.img = img;
     }
 
     public String getMessageTitle() {

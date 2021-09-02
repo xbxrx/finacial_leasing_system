@@ -147,7 +147,6 @@ public class ProductInfoController {
 
     @RequestMapping("queryAllProductInfoByDesc")
     public String queryAllProductInfoByDesc(Model model){
-
         List<ProductInfo> list=productInfoService.queryAllProductInfoByDesc();
         model.addAttribute("ProductInfoList",list);
         return "productInfo";

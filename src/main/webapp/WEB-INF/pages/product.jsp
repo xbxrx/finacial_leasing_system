@@ -24,6 +24,9 @@
     <link rel="stylesheet" href="<%=basePath%>css/admin.css" />
 </head>
 <body>
+<a href="<%=basePath%>productManager">
+    <input type="button" class="am-btn am-btn-success"  value="返回" />
+</a>
 <div class="main-content w1240">
     <h1 class="main-title">${productInfo.productName}</h1>
 

@@ -11,12 +11,14 @@
         <result property="authorName" column="author_name"/>
         <result property="publishTime" column="publish_time"/>
         <result property="productContent" column="product_content"/>
+        <result property="img" column="img"/>
+
     </resultMap>
 
 
     <insert id="addMessageInfo" parameterType="com.team01.domain.MessageInfo">
-        INSERT INTO message_list(message_title,author_name,publish_time,product_content)
-            VALUE(#{messageTitle},#{authorName},NOW(),#{productContent})
+        INSERT INTO message_list(message_title,author_name,publish_time,product_content,img)
+            VALUE(#{messageTitle},#{authorName},NOW(),#{productContent},#{img})
     </insert>
 
     <select id="queryAllMessageInfo" resultMap="paperResultMap">
@@ -45,7 +47,7 @@
 
     <update id="updateMessageInfo" parameterType="com.team01.domain.MessageInfo">
         update message_list
-        set message_title=#{messageTitle},author_name=#{authorName},publish_time=NOW(),product_content=#{productContent}
+        set message_title=#{messageTitle},author_name=#{authorName},publish_time=NOW(),product_content=#{productContent},img=#{img}
         where message_id=#{messageId}
     </update>
 

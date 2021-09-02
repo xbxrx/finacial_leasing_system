@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="<%=basePath%>css/amazeui.min.css">
     <link rel="stylesheet" href="<%=basePath%>css/admin.css">
     <link rel="stylesheet" href="<%=basePath%>css/app.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/xwlrbh/HandyEditor@1.6.7/HandyEditor.min.js"></script>
     <style>
         .admin-main{
             padding-top: 0px;
@@ -36,8 +38,9 @@
         <div class="admin-content-body">
             <div class="am-g">
                 <form action="<%=basePath%>toUpdateMessageResult" class="am-form am-form-horizontal" method="post"
-                      style="padding-top:30px;" data-am-validator>
+                      enctype="multipart/form-data"  style="padding-top:30px;" data-am-validator >
                     <input type="hidden" name="messageId" value="${messageInfo.messageId}">
+
 
                     <div class="am-form-group">
                         <label class="am-u-sm-3 am-form-label">
@@ -67,19 +70,25 @@
 <%--                        </div>--%>
 
                         <div class="am-u-sm-9">
-                                <textarea name="productContent"  placeholder="请输入主体内容"
-                                          data-equal-to="#doc-vld-ctn-3"
-                                          rows="16"
-                                          id="contentValue"
-                                >${messageInfo.productContent}</textarea>
+                               <textarea name="productContent" id="productContent" placeholder="请输入主体内容"
+                                         data-equal-to="#doc-vld-ctn-3"
+                                         rows="16">${messageInfo.productContent}</textarea>
                             <small>输入主体内容</small>
+                        </div>
+                    </div>
+
+                    <div class="am-form-group">
+                        <label class="am-u-sm-3 am-form-label">
+                            上传图片 </label>
+                        <div class="am-u-sm-9">
+                            <input type="file" name="myfile" multiple="multiple" />
                         </div>
                     </div>
 
 
                     <div class="am-form-group">
                         <div class="am-u-sm-9 am-u-sm-push-3">
-                            <input type="submit" class="am-btn am-btn-success" value="修改" />
+                            <input type="submit" id="submit" name="submit" class="am-btn am-btn-success" value="修改" />
                             <a href="<%=basePath%>toMessageInfo">
                                 <input type="button" class="am-btn am-btn-success"  value="返回" />
                             </a>
@@ -90,15 +99,36 @@
         </div>
     </div>
 </div>
+<script>
+    var he = HE.getEditor('productContent');
+    $("#submit").click(function () {
+        he.sync();
+
+    })
+</script>
 <script type="text/javascript"
         src="<%=basePath%>assets/js/libs/jquery-1.10.2.min.js">
 
 </script>
+<script>
+    $(document).ready(function () {
+        // create DateTimePicker from input HTML element
+        $("#datetimepicker").kendoDateTimePicker({
+            value: $("#myhiredate").val(),
+            dateInput: true
+        });
 
+        // create Editor from textarea HTML element with default set of tools
+        $("#productContent").kendoEditor({ resizable: {
+                content: true,
+                toolbar: true
+            }});
+    });
+</script>
 <%--<script>--%>
 <%--    document.getElementById("contentValue").value=${messageInfo.productContent}--%>
 <%--</script>--%>
-<script type="text/javascript" src="<%=basePath%>myplugs/js/plugs.js">
-</script>
+<script type="text/javascript" src="<%=basePath%>myplugs/js/plugs.js"></script>
+
 </body>
 </html>

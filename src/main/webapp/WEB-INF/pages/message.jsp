@@ -22,27 +22,29 @@
     <link rel="stylesheet" href="<%=basePath%>css/news.css" />
     <link rel="stylesheet" href="<%=basePath%>css/amazeui.min.css" />
     <link rel="stylesheet" href="<%=basePath%>css/admin.css" />
+    <script src="https://cdn.jsdelivr.net/gh/xwlrbh/HandyEditor@1.6.7/HandyEditor.min.js"></script>
 </head>
 <body>
-<div class="main-content w1240">
+<a href="<%=basePath%>toMessageInfo">
+    <input type="button" class="am-btn am-btn-success"  value="返回" />
+</a>
+<div class="main-content w1240" align="center">
     <h1 class="main-title">${messageInfo.messageTitle}</h1>
-
+    创作时间：<span class="date" >${messageInfo.publishTime}</span>
+    作者：<span target="_blank" class="source" data-sudaclick="content_media_p" rel="nofollow" style="margin-left: 24px">${messageInfo.authorName}</span>
 </div>
 <div class="top-bar-wrap" id="top_bar_wrap">
+
     <div class="top-bar ani" id="top_bar" data-isfix="0">
         <div class="top-bar-inner clearfix">
-            <div class="second-title">${messageInfo.messageTitle}</div>
-            <div class="date-source" data-sudaclick="share_1-0">
-                <span class="date">${messageInfo.publishTime}</span>
-                <span target="_blank" class="source" data-sudaclick="content_media_p" rel="nofollow" style="margin-left: 24px">${messageInfo.authorName}</span>
-            </div>
+
         </div>
+        <b align="left">正文：<font size="6">${messageInfo.productContent}</font>
+        </b>
+        <p align="center"><img src=${messageInfo.img} width="350px" height="400px"></p>
     </div>
+
 </div>
-
-
-<p>${messageInfo.productContent}</p>
-
 
 
 </body>
